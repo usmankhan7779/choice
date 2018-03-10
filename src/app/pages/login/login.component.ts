@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
                 'success'
               )
               // this.toastr.success('Successfully!', 'Logged in',{toastLife: 5000});
-              let url = 'home';
+              let url = 'dashboard';
               this._nav.navigate([url]);
 
             },

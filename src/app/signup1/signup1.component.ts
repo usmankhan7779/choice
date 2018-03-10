@@ -96,24 +96,30 @@ export class Signup1Component implements OnInit {
 emailauthentication() {
   // alert(this.premiseID.toString().length)
   //  alert('hello');
-  // if(this.premiseID&&this.premiseID.toString().length===17) {
+  console.log(this.model.email);
+  if(this.model.email){
   let headers = new HttpHeaders();
   headers.append('Content-Type', 'application/json');
   // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-  this.http.get(Config.api +'authenticade_code/'+'',{ headers: headers })
+  this.http.post(Config.api +'authenticade_code/',{"email": this.model.email},{ headers: headers })
 
       //  this.http.get(Config.api + 'signup/'+ this.zip_code +'', {headers: headers})
       .subscribe(Res => {
           console.log(Res);
         //     this.state= Res[0].state;
         //  Res[0].state=this.model;
-       // this.model.email = Res;
-         
+     //  this.email = Res;
+     swal({
+      type: 'success',
+      title: 'Please check your email for Account Activation Instructions',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
           // this.data.changeProducts(this.sg['products']);
 
       });
-}
+}}
   states() {
     // alert(this.premiseID.toString().length)
     //  alert('hello');
@@ -157,30 +163,30 @@ cities() {
 
       });
 }
-Email() {
-  // alert(this.premiseID.toString().length)
-  //  alert('hello');
-  console.log("CHOICE GENIE",this.model);
+// Email() {
+//   // alert(this.premiseID.toString().length)
+//   //  alert('hello');
+//   console.log("CHOICE GENIE",this.model);
 
-  let headers = new HttpHeaders();
-  headers.append('Content-Type', 'application/json');
-  // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-  this.http.put('https:/127.0.0.1:8000/authenticade_code/'+ this.model.state + '',{ headers: headers })
+//   let headers = new HttpHeaders();
+//   headers.append('Content-Type', 'application/json');
+//   // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+//   this.http.put('https:/127.0.0.1:8000/authenticade_code/'+ this.model.state + '',{ headers: headers })
 
-      //  this.http.get(Config.api + 'signup/'+ this.zip_code +'', {headers: headers})
-      .subscribe(Res => {
-          console.log(Res);
-          console.log(this.model);
-          //  this.sQuestion = Res[0].sQuestion;
-          // this.state = Res[0].state;
+//       //  this.http.get(Config.api + 'signup/'+ this.zip_code +'', {headers: headers})
+//       .subscribe(Res => {
+//           console.log(Res);
+//           console.log(this.model);
+//           //  this.sQuestion = Res[0].sQuestion;
+//           // this.state = Res[0].state;
          
 
 
-          // this.data.changeProducts(this.sg['products']);
+//           // this.data.changeProducts(this.sg['products']);
 
-      });
+//       });
 
-}
+// }
   signupuserdata() {
     //alert('hello');
     console.log("CHOICE GENIE",this.model);
@@ -217,5 +223,3 @@ Email() {
   }
 
 }
-
-
