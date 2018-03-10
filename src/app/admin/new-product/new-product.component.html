@@ -1,0 +1,370 @@
+<div class="new-product-holder">
+  <div class="container">
+    <h3 class="text-center">ADD NEW PRODUCT</h3>
+    <hr />
+    
+    <div class="row">
+      <!-- <form   *ngif="signupForm"> -->
+        <form  method="" action="" (ngSubmit)="onSubmit(f)" #f="ngForm" >  
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+              <!-- <input matInput placeholder="First Name" [formControl]="signupForm.controls['fname']" required [(ngModel)]="model.fname"> -->
+
+            <input matInput placeholder="Zipcode"     required  [(ngModel)]="model.zipcode"name="zipcode">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-8 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Company Name"   required  [(ngModel)]="model.Companyname"name="Companyname">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-12 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Plan Information"   [(ngModel)]="model.plan_information"name="plan_information">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Price Details"[(ngModel)]="model.price_rate"name="price_rate">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Company Profile Link"   [(ngModel)]="model.profileurl"name="profileurl">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Terms of Service "[(ngModel)]="model.terms_of_service"name="terms_of_service">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Fact Sheet  "  [(ngModel)]="model.fact_sheet"name="fact_sheet">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Contact Number"  required  [(ngModel)]="model.Phone"name="Phone">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Sign up Company"   [(ngModel)]="model.sign_up"name="sign_up">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Renewable price"  [(ngModel)]="model.renewable"name="renewable">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Price of 500 KWH" required  [(ngModel)]="model.price_500_kwh"name="price_500_kwh">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Price of 1000 KWH" required  [(ngModel)]="model.price_1000_kwh"name="price_1000_kwh">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Price of 2000 KWH"  required  [(ngModel)]="model.price_2000_kwh"name="price_2000_kwh">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput [matDatepicker]="startDate" placeholder="Start Date" (click)="startDate.open()" (focus)="startDate.open()">
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+            <mat-error *ngIf="firstFormGroup.controls.reqDate.value == ''"><strong>Cannot be empty</strong></mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput [matDatepicker]="endDate" placeholder="Start Date" (click)="endDate.open()" (focus)="endDate.open()">
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+            <mat-error *ngIf="firstFormGroup.controls.reqDate.value == ''"><strong>Cannot be empty</strong></mat-error>
+          </mat-form-field>
+        </div>
+      </div>  -->
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Comment 1" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Comment 2" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="REF 1" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="REF 2" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="REF 3" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="REF 4" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Challenge Question" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Challenge Answer" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <div class="fileinput fileinput-new text-center" data-provides="fileinput"> -->
+              <!--<div class="fileinput-new thumbnail">-->
+                <!--<img src="../../../assets/img/image_placeholder.jpg" alt="...">-->
+              <!--</div>-->
+              <!-- <div class="fileinput-preview fileinput-exists thumbnail"></div>
+            <div>
+              <span class="btn btn-rose btn-round btn-file btn-sm">
+                  <span class="fileinput-new">Select Doc 1</span>
+                  <span class="fileinput-exists">Change</span>
+                  <input type="file" name="..." />
+              </span>
+              <a href="" class="btn btn-danger btn-round fileinput-exists btn-sm" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <div class="fileinput fileinput-new text-center" data-provides="fileinput"> -->
+            <!--<div class="fileinput-new thumbnail">-->
+            <!--<img src="../../../assets/img/image_placeholder.jpg" alt="...">-->
+            <!--</div>-->
+            <!-- <div class="fileinput-preview fileinput-exists thumbnail"></div>
+            <div>
+              <span class="btn btn-rose btn-round btn-file btn-sm">
+                  <span class="fileinput-new">Select Doc 2</span>
+                  <span class="fileinput-exists">Change</span>
+                  <input type="file" name="..." />
+              </span>
+              <a href="" class="btn btn-danger btn-round fileinput-exists btn-sm" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="clearfix"></div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="EFL url" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="TOS url" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Index Name" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Edi Bill Presenter" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Tax Indicator" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Edi Bill Calculator" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Deposit Indicator" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Dly Index Name" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Rate" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+<!-- 
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Rate Per" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Uom" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Type" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Sub Type" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Term" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Termination Fee" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Misc 1" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Misc 2" value="">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Misc 3" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput placeholder="Display Info" value="">
+          </mat-form-field>
+        </div>
+      </div> -->
+      <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+          <button class="btn btn-lrg btn-rose btn-fill btn-wd" style="width:100%; border-radius:50px;font-size:24px !important;" type="submit" (click)="signupuserdata();sweetalertsignup1()"
+          >Add New Product </button>
+        </div>
+      </div>
+
+</form>
+    </div>
+  </div>
+</div>

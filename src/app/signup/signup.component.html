@@ -1,0 +1,479 @@
+<div class="main-content signup-main">
+
+  <div class="container">
+    <h3 class="text-center">Tell Us About <strong>Yourself</strong></h3>
+    <hr />
+    <div class="alert alert-rose alert-with-icon" data-notify="container">
+      <i class="material-icons" data-notify="icon">notifications</i>
+      <span data-notify="message">Any Enrollment Request including move-in or a switch can only be made by service applicant or the applicant's authorized agent.
+        <br />
+        If you are not an authorized individual, please do not submit your request using this portal.
+      </span>
+    </div>
+    <form method="" action="" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <mat-horizontal-stepper [linear]="isLinear">
+        <mat-step [stepControl]="firstFormGroup">
+          <div [formGroup]="firstFormGroup" >
+            <ng-template matStepLabel>Switching or Moving</ng-template>
+            <div class="card">
+              <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">mail_outline</i>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Are you MOVING or SWITCHING providers at the selected service location ?</h4>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label class="control-label">Service Type <span class="required">(required)</span></label>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" value="movein" formControlName="serviceType"  [(ngModel)]="model.serviceType" >
+                            Move in (New Service)
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" value="sDate" formControlName="serviceType" [(ngModel)]="model.serviceType"  >
+                            Switching from another Energy Provider on Next Available Schedule Date
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" value="anOther" formControlName="serviceType" [(ngModel)]="model.serviceType" >
+                            Switching from another Energy Provider on a Specific Date
+                          </label>
+                        </div>
+                        <mat-error *ngIf="firstFormGroup.controls['serviceType'].invalid"><strong>One statement must be selected</strong></mat-error>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group" id="requestDate">
+                        <label class="control-label">Requested Date <span class="required">(required)</span></label>
+                        <div class="clearfix">
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="picker" placeholder="Choose a date" (click)="picker.open()" (focus)="picker.open()" required [formControl]="date" [(ngModel)]="model.serviceTypeDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <!--<mat-error *ngIf="firstFormGroup.controls.reqDate.value == ''"><strong>Cannot be empty</strong></mat-error>-->
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <br class="clearfix" />
+                    <div class="col-sm-12">
+                      <div class="alert alert-rose alert-with-icon" data-notify="container">
+                        <i class="material-icons" data-notify="icon">notifications</i>
+                        <span data-notify="message">
+                          <p>A standard switch will be completed in 0 - 7 working days. Move-in and self-selected switch fees may be aaplicable and
+                            passed through to you from your TDSP. Please refer to your TOS for full list of TDSP fees.</p>
+                          <p>
+                            In the case of switch request, you have the right to review and rescind the Terms Of Service within three
+                            federal business days, after receiving the Terms Of Service, without penalty.
+                          </p>
+                          <p>
+                            If you take an action that cancels or terminate your service with us, prior to the end of the initial term specified
+                            in your contract, you may be responsible to pay an early termination fee (ETF) specified in your TOS / EFL.
+                          </p>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                <div class="text-right">
+                  <button mat-button matStepperNext class="btn btn-fill btn-rose">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <div [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>About</ng-template>
+            <div class="card">
+              <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">mail_outline</i>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">About Yourself</h4>
+                <label class="control-label"><i><u>This will appear as the name of your bill</u></i></label>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label class="control-label">First Name *</label>
+                      <mat-form-field>
+                        <input matInput placeholder="First Name" formControlName="fName" required  [(ngModel)]="model.first_name">
+                        <mat-error *ngIf="secondFormGroup.controls.fName.value == ''"><strong>Cannot be empty</strong></mat-error>
+                        <mat-error *ngIf="secondFormGroup.controls.fName.dirty && !secondFormGroup.controls.fName.value"> Special characters not allowed</mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label class="control-label">Middle Name</label>
+                      <mat-form-field>
+                        <input matInput placeholder="Middle Name" formControlName="mName"  [(ngModel)]="model.middle_name">
+                        <mat-error *ngIf="secondFormGroup.controls.mName.dirty && !secondFormGroup.controls.mName.value"> Special characters not allowed</mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <br class="clearfix" />
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label class="control-label">Last Name *</label>
+                      <mat-form-field>
+                        <input matInput placeholder="Last Name" formControlName="lName" required   [(ngModel)]="model.last_name">
+                        <mat-error *ngIf="secondFormGroup.controls.lName.value == ''"><strong>Cannot be empty</strong></mat-error>
+                        <mat-error *ngIf="secondFormGroup.controls.lName.dirty && !secondFormGroup.controls.lName.value"> Special characters not allowed</mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label class="control-label">Date of Birth *</label>
+                      <div class="clearfix">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="picker2" placeholder="Choose a date" required formControlName="dateofbirth"
+                                 (click)="picker2.open()" (focus)="picker2.open()" [(ngModel)]="model.dob">
+                          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                          <mat-datepicker #picker2></mat-datepicker>
+                          <mat-error *ngIf="secondFormGroup.controls.dateofbirth.value == ''"><strong>Cannot be empty</strong></mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <br class="clearfix" />
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label class="control-label">Authorized Representative</label>
+                      <mat-form-field>
+                        <input matInput placeholder="Authorized Representative" formControlName="authRepresent" [(ngModel)]="model.auth_rep" >
+                        <mat-error *ngIf="secondFormGroup.controls.authRepresent.dirty && !secondFormGroup.controls.authRepresent.value"> Special characters not allowed</mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <br class="clearfix" />
+                  <div class="col-sm-12">
+                    <h3 class="title"><strong>Billing Address</strong></h3>
+                  </div>
+                  <br class="clearfix" />
+                  <div class="col-sm-12">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="optionsCheckboxes" (click)="ifChecked($event)"   checked>
+                        Copy Address (same as Service Address)
+                      </label>
+                    </div>
+                  </div>
+                  <br class="clearfix" />
+                  <div *ngIf="signupAddress == 1">
+                    <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Apartment Name *</label>
+                      <mat-form-field>
+                        <input matInput placeholder="Apartment Name" formControlName="aprtName" value="" [(ngModel)]="model.appartment">
+                        <!--<mat-error *ngIf="aprtName.hasError('pattern')">Please enter alphabets without special characters</mat-error>-->
+                        <!--<mat-error *ngIf="aprtName.hasError('required')">Apartment is <strong>required</strong></mat-error>-->
+                        <mat-error *ngIf="secondFormGroup.controls.aprtName.value == ''"><strong>Cannot be empty</strong></mat-error>
+                        <mat-error *ngIf="secondFormGroup.controls.aprtName.dirty && !secondFormGroup.controls.aprtName.value == ''"> Special characters not allowed</mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label">Street Address *</label>
+                        <mat-form-field>
+                          <input matInput placeholder="Street Address" formControlName="staddress" required  [(ngModel)]="model.address">
+                          <mat-error *ngIf="secondFormGroup.controls.staddress.value == ''"><strong>Cannot be empty</strong></mat-error>
+                          <mat-error *ngIf="secondFormGroup.controls.staddress.dirty && !secondFormGroup.controls.staddress.value == ''"> Special characters not allowed</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <br class="clearfix" />
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label">City *</label>
+                        <mat-form-field>
+                          <input matInput placeholder="City" formControlName="city"  required  [(ngModel)]="billingAddress[0].city">
+                          <mat-error *ngIf="secondFormGroup.controls.city.value == ''"><strong>Cannot be empty</strong></mat-error>
+                          <mat-error *ngIf="secondFormGroup.controls.city.dirty && !secondFormGroup.controls.city.value == ''"> Special characters not allowed</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label">State *</label>
+                        <mat-form-field>
+                          <input matInput placeholder="State" formControlName="state"  required  [(ngModel)]="billingAddress[0].state">
+                          <mat-error *ngIf="secondFormGroup.controls.state.value == ''"><strong>Cannot be empty</strong></mat-error>
+                          <mat-error *ngIf="secondFormGroup.controls.state.dirty && !secondFormGroup.controls.state.value == ''"> Special characters not allowed</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <br class="clearfix" />
+                    <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="control-label">Zip *</label>
+                      <mat-form-field>
+                        <input matInput placeholder="Zip" formControlName="zip"  required [(ngModel)]="billingAddress[0].zip_code">
+                        <!--<mat-error *ngIf="zip.hasError('pattern')">Digits Only</mat-error>-->
+                        <!--<mat-error *ngIf="zip.hasError('required')">Zip is <strong>required</strong></mat-error>-->
+                        <mat-error *ngIf="secondFormGroup.controls.zip.value == ''"><strong>Cannot be empty</strong></mat-error>
+                        <mat-error *ngIf="secondFormGroup.controls.zip.dirty && !secondFormGroup.controls.zip.value == ''">Digits Only</mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button mat-button matStepperPrevious class="btn btn-fill btn-rose">Back</button>
+                  <button mat-button matStepperNext class="btn btn-fill btn-rose">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+          <div [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Identity / Security</ng-template>
+            <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+              <i class="material-icons">mail_outline</i>
+            </div>
+            <div class="card-content">
+              <h4 class="card-title">Your Identity / Security Information</h4>
+              <label class="control-label"><i><u>
+                You must enter your Social Security Number if you would like to use a credit card
+              to access weather a deposit is required
+              </u></i></label>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">SSN</label>
+                    <mat-form-field>
+                      <input matInput placeholder="Social Security Number" formControlName="SSN" name="SSN" value="" required [(ngModel)]="model.social_security_number">
+                      <mat-error *ngIf="thirdFormGroup.controls.SSN.value == ''"><strong>Cannot be Empty</strong></mat-error>
+                      <mat-error *ngIf="thirdFormGroup.controls.SSN.dirty && !thirdFormGroup.controls.SSN.value">Only Numbers and Dashes (-)</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <br class="clearfix" />
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Driver's Lisence</label>
+                    <mat-form-field>
+                      <input matInput placeholder="Driver's Lisence" formControlName="driverLisence" [(ngModel)]="model.driver_license">
+                      <mat-error *ngIf="thirdFormGroup.controls.driverLisence.dirty && !thirdFormGroup.controls.driverLisence.value">Only Numbers and Dashes (-)</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Lisence State</label>
+                    <mat-form-field>
+                      <input matInput placeholder="Lisence State" formControlName="lisenceState" [(ngModel)]="model.license_state">
+                      <mat-error *ngIf="thirdFormGroup.controls.lisenceState.dirty && !thirdFormGroup.controls.lisenceState.value">Special characters not allowed</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <br class="clearfix" />
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Expiration Date</label>
+                    <div class="clearfix">
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker3" placeholder="Choose a date" (click)="picker3.open()" (focus)="picker3.open()" name="expiry" [(ngModel)]="model.licence_expired_date" >
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                  <label class="control-label">Security Question</label>
+                  <mat-form-field>
+                  <mat-select placeholder="Select Your Question" (ngModelChange)="check()" [(value)]  ="model.security_question">
+                  <mat-option *ngFor="let q of questions" [value]="q.question">
+                  {{q.question }}
+                  </mat-option>
+                  
+                  </mat-select>
+                  </mat-form-field>
+                  </div>
+                  </div>
+                <!-- <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Security Question</label>
+                    <mat-form-field>
+                      <mat-select placeholder="Select Your Question">
+                        <mat-option *ngFor="let q of sQuestion" [value]="q.value" [(ngModel)]="model.security_question">
+                          {{ q.value }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div> -->
+                <br class="clearfix" />
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Security Answer</label>
+                    <mat-form-field>
+                      <input matInput placeholder="Write Your Answer "  formControlName="security_answer" [(ngModel)]="model.sequrity_answer">
+                      <mat-error *ngIf="thirdFormGroup.controls.security_answer.dirty && !thirdFormGroup.controls.security_answer.value">Special characters not allowed</mat-error>
+                    </mat-form-field>
+                    <!-- <mat-form-field >
+                      <input matInput   placeholder="Write Your Answer " [(ngModel)]="model.sequrity_answer" name="sajkds">
+                      {{model.sequrity_answer}}
+                      </mat-form-field> -->
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <button mat-button matStepperPrevious class="btn btn-fill btn-rose">Back</button>
+                <button mat-button matStepperNext class="btn btn-fill btn-rose">Next</button>
+              </div>
+            </div>
+          </div>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="fourthFormGroup">
+          <div [formGroup]="fourthFormGroup">
+            <ng-template matStepLabel>Others</ng-template>
+            <div class="card">
+              <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">mail_outline</i>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Other Checks</h4>
+                <h3 class="title"><strong>Special Requests</strong></h3>
+                <label class="control-label" ><i><u>
+                  Choose if a resident at the selected address requires Life Support
+                </u></i></label>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="" [(ngModel)]="model.life_support">
+                          Life Support
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <h3 class="title"><strong>Automatic Bill Pay</strong></h3>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="" [(ngModel)]="model.automatic_bill_pay">
+                          Sign Up for Automatic Bill Pay
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <h3 class="title"><strong>Credit Verification</strong></h3>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="creditVerification"  [(ngModel)]="model.credit_verification">
+                          Checky Credit
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="creditVerification"  [(ngModel)]="model.credit_verification">
+                          Don't Check Credit
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="creditVerification"  [(ngModel)]="model.credit_verification">
+                          Waive Deposit
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button mat-button matStepperPrevious class="btn btn-fill btn-rose">Back</button>
+                  <button mat-button matStepperNext class="btn btn-fill btn-rose">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="fifthFormGroup">
+          <div [formGroup]="fifthFormGroup">
+            <ng-template matStepLabel>Authorization</ng-template>
+            <div class="card">
+              <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">mail_outline</i>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">Please read carefully and provide Authorization</h4>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="choosingLLC" required formControlName="choosingLLC">
+                          I am Choosing Our Energy LLC | TX PUCT #10170 to provide energy services for the selected location.
+                        </label>
+                        <mat-error *ngIf="fifthFormGroup.controls['choosingLLC'].invalid">Must be Selected to proceed</mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="authPerson" required formControlName="authPerson">
+                          I am an authorized person to request service for the selected location.<br />
+                          Any Enrollment request including move-in or a switch can only be made by the service applicant's authorized agent.
+                          If you are not an authorized individual, please do not submit your request using this portal.
+                        </label>
+                        <mat-error *ngIf="fifthFormGroup.controls['authPerson'].invalid">Must be Selected to proceed</mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="readDocs" required formControlName="readDocs">
+                          I have read and understand all the authorization disclosures and terms of service for the product I have chosen.
+                          You can view, print or save your Terms of Service document <a href="#">here</a>.
+                        </label>
+                        <mat-error *ngIf="fifthFormGroup.controls['readDocs'].invalid">Must be Selected to proceed</mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="alert alert-rose alert-with-icon" data-notify="container">
+                      <i class="material-icons" data-notify="icon">notifications</i>
+                      <div data-notify="message">
+                        <p>
+                          You will receive a copy of the Terms of Service via e-mail or, upon request, via regular US mail,
+                          that will explain all Terms of the Agreement and how to exercise the right of rescission.
+                        </p>
+                        <p>If you have chosen a prepaid service, you will not receive a bill and may request a summary of usage and payment if needed.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button mat-button matStepperPrevious class="btn btn-fill btn-rose">Back</button>
+                  <button type="submit" mat-button matStepperNext (click)="signupdata();sweetalertsignup()" class="btn btn-fill btn-rose">Done</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </form>
+  </div>
+</div>

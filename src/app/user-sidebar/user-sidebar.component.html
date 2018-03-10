@@ -1,0 +1,201 @@
+
+<div class="sidebar-user">
+  <nav>
+    <ul>
+      <li>
+        <div class="text-center">
+          <button type="button" class="btn btn-rose" (click)="fetchProducts();fetchmonth();fetchrenewable();fetchzip();"> Search <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i></button>
+        </div>
+      </li>
+      
+      <li>
+        <h5>Enter Zip Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" title="Enter zipcode."></i></h5> 
+       
+        <div class="form-group label-floating">
+          <label class="control-label"style="font-size: 18px">Your Zip Code</label>
+         <b> <input  type="text"  class="form-control" [(ngModel)]="zip_code" name="zipcode" style="font-size: 20px" ></b>
+        </div>
+    
+      </li>
+      <!-- <li>
+        <h5>Items per Page</h5>
+        <mat-form-field >
+        <mat-select  (ngModelChange)="check($event)" [(ngModel)]="items"  >
+          <mat-option value="10" style="font-size: 20px">10</mat-option>
+          <mat-option value="20" style="font-size: 20px">20 </mat-option>
+          <mat-option value="30" style="font-size: 20px">30 </mat-option>
+        </mat-select>
+        </mat-form-field>
+  
+      </li> -->
+      <li>
+        <h5>Estimated Usage&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" title="If you choose a plan with a long contract period, you may be subject to an early cancellation fee if you decide to change plans prior to the expiration of the contract period.  Plans that are shorter give you more flexibility to switch, but they only lock in your set rate for a short amount of time.Month-to-Month plans are usually Variable or Indexed offers."></i></h5>
+        <mat-form-field >
+        <mat-select  placeholder="KWh" (ngModelChange)="check($event)" [(ngModel)]="eUsage"  >
+          <mat-option value="500" style="font-size: 20px">500  kWh</mat-option>
+          <mat-option value="1000" style="font-size: 20px">1000 kWh</mat-option>
+          <mat-option value="2000" style="font-size: 20px">2000 kWh</mat-option>
+        </mat-select>
+        </mat-form-field>
+  
+      </li>
+
+      <li>
+        <h5>Renewable Energy</h5>
+        <mat-form-field >
+        <mat-select (ngModelChange)="check($event)" [(ngModel)]="renewable"  >
+          <mat-option value="100">100% RENEWABLE</mat-option>
+									<mat-option value="75">76% To 99%</mat-option>
+									<mat-option value="50">51% To 75%</mat-option>
+									<mat-option value="25">26% To 50%</mat-option>
+									<mat-option value="5">0% To 25%</mat-option>
+									<mat-option value="" selected="selected">N/A</mat-option>
+        </mat-select>
+        </mat-form-field>
+  
+      </li>
+
+
+
+
+
+
+
+
+      <!-- <li>
+        <h5> Price/kWh </h5> 
+        <div class="form-group label-floating">
+            <label class="control-label">Min Price</label>
+            <input   tabindex="2" maxlength="5"  type="text" class="form-control" [(ngModel)]="min"  name="min" > 
+            <span class="to"><b>To</b></span>
+           
+
+
+         
+        </div>
+      </li>
+<li>
+    <div class="form-group label-floating">
+    <label class="control-label">Max Price</label>
+    <input   tabindex="3" maxlength="5"  type="text" class="form-control" [(ngModel)]="max"  name="max"> 
+    </div>
+</li> -->
+
+      
+      <!-- <li> -->
+        <!-- <h5>Custom Usage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" title=""></i></h5> -->
+        <!-- <div class="form-group label-floating"> -->
+          <!-- <label class="control-label">Add Custom Usage</label> -->
+          <!-- <input type="text" class="form-control"[(ngModel)]="Custom_Usage" name="Custom_Usage"> -->
+        <!-- </div> -->
+      <!-- </li> -->
+      <li>
+        <h5>Contract Length
+          &nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" title="If you choose a plan with a long contract period, you may be subject to an early cancellation fee if you decide to change plans prior to the expiration of the contract period.Plans that are shorter give you more flexibility to switch, but they only lock in your set rate for a short amount of time.Month-to-Month plans are usually Variable or Indexed offers.."></i>
+        </h5>
+        <!-- <mat-form-field> -->
+        <mat-select placeholder="In Months" (ngModelChange)="check($event)" [(ngModel)]="months" >
+            <mat-option value="3"style="font-size: 20px">3 Months</mat-option>
+            <mat-option value="6"style="font-size: 20px">6 Months</mat-option>
+            <mat-option value="12"style="font-size: 20px">12 Months</mat-option>
+            <mat-option value="18"style="font-size: 20px">18 Months</mat-option>
+            <mat-option value="24"style="font-size: 20px">24 Months</mat-option>
+            <mat-option value="36"style="font-size: 20px">36 Months</mat-option>
+          <!-- <mat-option *ngFor="let x of usage" [value]="x.value">
+            {{ x.viewValue }}
+          </mat-option> -->
+        </mat-select>
+      <!-- </mat-form-field> -->
+      </li>
+      <li>
+        <h5>Pricing and Billing &nbsp;<i class="fa fa-info-circle" aria-hidden="true" title="This filter allows you to view plans that do not have any recurring fees or credits included in the average per kWh price. If you choose to view plans with fees/credits included in the average per kWh price, you need to be aware that the average per kWh price may vary significantly from your actual billed price per kWh. Please review the fact sheets for these plans carefully before enrolling in a product."></i></h5>
+        <div class="radio">
+          <label>
+            <input type="radio" name="pricingbiling"  checked="true"  (ngModelChange)="check($event)"  >
+            Show All Plans
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="pricingbiling" (ngModelChange)="check($event)">
+            Plans without minimum usage Fee/Credits
+          </label>
+        </div>
+      </li>
+      <li>
+        <h5>Plan Type
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" title="Prepaid plans provide service on a “pay-as-you-go” basis. These plans require close monitoring or accurately estimating your monthly electric use to avoid disconnection.."></i>
+        </h5>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="planType_fixedRate"(ngModelChange)="check($event)">
+            Fixed Rate
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="planType_variable"   (ngModelChange)="check($event)">
+            Variable <small>(changing rate)</small>
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="planType_Indexed"(ngModelChange)="check($event)">
+            Indexed <small>(market rate)</small>
+          </label>
+        </div>
+      </li>
+      <li>
+        <h5>Prepaid Plans &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" title="Prepaid plans provide service on a “pay-as-you-go” basis. These plans require close monitoring or accurately estimating your monthly electric use to avoid disconnection.."></i></h5>
+        <div class="radio">
+          <label>
+            <input type="radio" name="prepaidPlans" checked="true" (ngModelChange)="check($event)">
+            Show All Plans
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="prepaidPlans"(ngModelChange)="check($event)">
+            Show only Prepaid Plans
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="prepaidPlans"(ngModelChange)="check($event)">
+            Do not show Prepaid Plans
+          </label>
+        </div>
+      </li>
+      <li>
+        <h5>Time of Use Plans &nbsp;<i class="fa fa-info-circle" aria-hidden="true" title="Time-of-Use plans include incentives to use power during certain periods such as nights or weekends.  The average prices shown for Time-of-Use Plans are based on the REP’s estimate of energy used during discounted and non-discounted times.  Please note that the average price you pay will vary depending on your actual usage of energy during the discounted and non-discounted times.  See the glossary for details."></i></h5>
+        <div class="radio">
+          <label>
+            <input type="radio" name="timeOfUse" checked="true" (ngModelChange)="check($event)">
+            Show All Plans
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="timeOfUse"(ngModelChange)="check($event)">
+            Show only Time Of Use Plans
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="timeOfUse" (ngModelChange)="check($event)">
+            Do not show Time Of Use Plans
+          </label>
+        </div>
+      </li>
+      <li>
+          <div class="text-center">
+            <button type="button" class="btn btn-rose" (click)="fetchProducts();fetchmonth();fetchrenewable();fetchzip()"> Search <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i></button>
+          </div>
+        </li>
+      <!-- <li>
+        <h5>Ranging from</h5>
+        <mat-slider thumbLabel min="0" max="100" step="5" value="0"></mat-slider>
+      </li> -->
+    </ul>
+  </nav>
+</div>

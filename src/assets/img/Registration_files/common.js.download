@@ -1,0 +1,888 @@
+/*if(document.getElementById('popupContact').style.display=="inline"){
+	document.getElementById('add_qual').style.display='none';
+}*/
+/***** Gernal Ajax Updates ******/
+function updates(result, ui_id){
+	var div = $(ui_id);
+	if (result.status==Http.Status.OK){
+		//alert(result.responseText);
+		div.innerHTML = result.responseText;
+	}else{
+		//div.innerHTML = "An error occurred (" + result.status.toString() + ").";
+		div.innerHTML = "";
+	}
+}// end update()
+/***** Gernal Caption Ajax Updates ******/
+function captionupdates(result, ui_id){
+	var div = $(ui_id);
+	if (result.status==Http.Status.OK){
+		document.getElementById('managecaption').style.display = 'none' ; 
+		//alert(result.responseText);
+		div.innerHTML = result.responseText;
+	}else{
+		//div.innerHTML = "An error occurred (" + result.status.toString() + ").";
+		div.innerHTML = "";
+	}
+}// end update()
+
+//MULTI-LAYER AJAX
+function ajaxMultiLayerObject(layer, url) {
+   var that=this;
+   var updating = false;
+   this.callback = function() {}
+
+   this.update = function(passData){
+      if (updating==true) { return false; }
+      updating=true;
+      var AJAX = null;
+      if (window.XMLHttpRequest){
+         AJAX=new XMLHttpRequest();
+      }else{
+         AJAX=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      if (AJAX==null){
+         alert("Your browser doesn't support AJAX.");
+         return false;
+      }else{
+         AJAX.onreadystatechange = function(){
+            if (AJAX.readyState==4 || AJAX.readyState=="complete"){
+				//
+				if(AJAX.responseText=='Add Qualification' ){
+					document.getElementById('add_qual_popup').click();
+					
+					document.getElementById('responcediv').innerHTML="";
+					document.getElementById('applicantadded').innerHTML="Applicant added";
+					//callajaxobject_applicant('responcediv','files_z426/ajax/addqualification.php');
+				}
+				if(AJAX.responseText=='Qualification ok'){
+					
+					document.getElementById('generate').click();
+				}
+				//alert(AJAX.responseText);
+				
+				var res=AJAX.responseText;
+				var startpos=res.indexOf("-");
+			
+				if(res.indexOf("Select District") && LayerID.id=='district')	
+				{
+					
+						var inner = AJAX.responseText; 
+						select_innerHTML(LayerID,inner);
+						//alert();
+					
+				}
+				else if(res.indexOf("Select Major") && LayerID.id=='major')	
+				{
+					
+						var inner = AJAX.responseText; 
+						select_innerHTML(LayerID,inner);
+						//alert(LayerID.id);
+					
+				}
+				else if(res.indexOf("Select Subjects") && LayerID.id=='subjects')	
+				{
+					
+						var inner = AJAX.responseText; 
+						select_innerHTML(LayerID,inner);
+						//alert(LayerID.id);
+					
+				}
+				else if(res.indexOf("Select Tehsil") && LayerID.id=='tehsil')	
+				{
+					
+						var inner = AJAX.responseText; 
+						select_innerHTML(LayerID,inner);
+						//alert(LayerID.id);
+					
+				}
+				
+				
+				else
+				{
+					
+					var res=AJAX.responseText;
+					var startpos=res.indexOf("-");
+					var err=res.substring(startpos+1);
+					document.getElementById(layer).innerHTML=err;
+					//LayerID.innerHTML=AJAX.responseText;
+				}
+				
+				var dat=jQuery('#divqualification').html();
+
+				if(dat.indexOf('Are you sure')>0)
+				{
+					jQuery('#add_qual_popup').css({
+							"display":"none"
+						/*"left": 363.5*/
+					});
+					//alert('Gone');
+				}
+				else
+				{
+					jQuery('#add_qual_popup').css({
+							"display":"inline"
+						/*"left": 363.5*/
+					});
+					//alert('Came');
+				}
+				/*else if(res.indexOf("Select Tehsil"))	
+				{
+					
+					
+						var resText=AJAX.responseText;
+						LayerID.innerHTML='<option value="">Select Tehsil</option>'+resText;
+						LayerID.outerHTML=LayerID.outerHTML;
+					
+					
+				}
+				
+				else
+				{}*/
+				
+				//alert(LayerID.innerHTML);
+				//}else{
+				//alert(startpos);
+				
+			/*	document.getElementById('error_select').innerHTML="";
+				document.getElementById('error_nic').innerHTML="";
+				document.getElementById('error_email').innerHTML="";
+				document.getElementById('error_name').innerHTML="";
+				document.getElementById('error_fathername').innerHTML="";
+				document.getElementById('error_dob').innerHTML="";
+				document.getElementById('error_height').innerHTML="";
+				document.getElementById('error_marital').innerHTML="";
+				document.getElementById('error_gender').innerHTML="";
+				document.getElementById('error_province').innerHTML="";
+				document.getElementById('error_district').innerHTML="";
+				document.getElementById('error_phone').innerHTML="";
+				document.getElementById('error_mobile').innerHTML="";
+				document.getElementById('error_password').innerHTML="";
+				document.getElementById('error_religion').innerHTML="";
+				document.getElementById('error_address').innerHTML="";
+				//document.getElementById('responcediv').innerHTML="";
+				//document.getElementById('responcediv').innerHTML="";
+				var div=res.substring(0,startpos);
+				//alert(div);
+				var err=res.substring(startpos+1);
+				document.getElementById(div).innerHTML=err;
+				//alert(err);
+				
+				}*/
+				delete AJAX;
+               updating=false;
+               that.callback();
+            }
+         }
+         var timestamp = new Date();
+         var uri=urlCall+'?'+passData+'&timestamp='+(timestamp*1);
+         AJAX.open("POST", uri, true);
+         AJAX.send(null);
+         return true;
+      }
+   }
+   // This area set up on constructor calls.
+   var LayerID = document.getElementById(layer);
+   var urlCall = url;
+}
+function ajaxMultiLayerObject1(layer, url) {
+   var that=this;
+   var updating = false;
+   this.callback = function() {}
+
+   this.update = function(passData){
+      if (updating==true) { return false; }
+      updating=true;
+      var AJAX = null;
+      if (window.XMLHttpRequest){
+         AJAX=new XMLHttpRequest();
+      }else{
+         AJAX=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      if (AJAX==null){
+         alert("Your browser doesn't support AJAX.");
+         return false;
+      }else{
+         AJAX.onreadystatechange = function(){
+            if (AJAX.readyState==4 || AJAX.readyState=="complete"){
+				
+				var res=AJAX.responseText;
+				var startpos=res.indexOf("-");
+			
+				document.getElementById('error_captcha').innerHTML="";
+				document.getElementById('error_select').innerHTML="";
+				document.getElementById('error_nic').innerHTML="";
+				document.getElementById('error_email').innerHTML="";
+				document.getElementById('error_name').innerHTML="";
+				document.getElementById('error_fathername').innerHTML="";
+				document.getElementById('error_dob').innerHTML="";
+				document.getElementById('error_height').innerHTML="";
+				document.getElementById('error_marital').innerHTML="";
+				document.getElementById('error_gender').innerHTML="";
+				document.getElementById('error_province').innerHTML="";
+				document.getElementById('error_district').innerHTML="";
+				document.getElementById('error_phone').innerHTML="";
+				document.getElementById('error_mobile').innerHTML="";
+				document.getElementById('error_password').innerHTML="";
+				document.getElementById('error_religion').innerHTML="";
+				document.getElementById('error_address').innerHTML="";
+				document.getElementById('error_paddress').innerHTML="";
+				
+				if(startpos>0)
+				{
+					var div=res.substring(0,startpos);
+					var err=res.substring(startpos+1);
+					document.getElementById(div).innerHTML=err;
+				}
+				//alert(err);
+				
+				}
+				delete AJAX;
+               updating=false;
+               that.callback();
+            }
+         var timestamp = new Date();
+         var uri=urlCall+'?'+passData+'&timestamp='+(timestamp*1);
+         AJAX.open("GET", uri, true);
+         AJAX.send(null);
+         return true;
+      }
+   }
+   // This area set up on constructor calls.
+   var LayerID = document.getElementById(layer);
+   var urlCall = url;
+}
+//REQUEST MULTI-AJAX
+function callajaxobject(divid,url,editmajor,editgroup){
+	var qual  =document.getElementById('qualification').value;
+	var maj  =document.getElementById('major').value;
+	var subj  =document.getElementById('subjects').value;
+	if(document.getElementById('editqualid').value==''){
+		var action='addqualification';
+	}else{
+		var action='updatequalifcation';
+	}
+	//var subj  =document.getElementById('subject').value;
+	var marks  =document.getElementById('marksobt').value;
+	var mtotal  =document.getElementById('markstotal').value;
+	var bord  =document.getElementById('board').value;
+	var year  =document.getElementById('passingyear').value;
+	var nicno  =document.getElementById('nic1').value;
+	var group=document.getElementById('editgroup').value;
+	var majored=document.getElementById('editmajor').value;
+	var editqaul=document.getElementById('editqualid').value;
+ 	var dataparsed="&qualification="+qual+"&majoredit="+majored+"&subjects="+subj+"&groupedit="+group+"&qualid="+editqaul+"&major="+maj+"&marksobt="+marks+"&markstotal="+mtotal+"&passingyear="+year+"&board="+bord+"&xyz123="+action;
+	//alert(dataparsed);
+	//document.getElementById(divid).innerHTML = '<span style="padding-left:40%;"><img src="../../images/loading_animation.gif" style=""  /></span>';
+	var callreq = new ajaxMultiLayerObject(divid, url);
+	callreq.update(dataparsed);
+	document.getElementById('editqualid').value='';
+}
+
+
+
+function callajaxobject_applicant(divid,url){
+	var selcenter  =document.getElementById('center').value;
+	var cat  =document.getElementById('category').value;
+	var brnch  =document.getElementById('branch').value;
+	var nicno  =document.getElementById('nic1').value;
+	var name1  =document.getElementById('firstname').value;
+	var name2  =document.getElementById('lastname').value;
+	var fname  =document.getElementById('fathername').value;
+	var birthdate  =document.getElementById('dob').value;
+	var gender1  =document.getElementById('gender').value;
+	var maritalstat  =document.getElementById('marital').value;
+	var prov  =document.getElementById('province').value;
+	var dist  =document.getElementById('district').value;
+	var teh  =document.getElementById('tehsil').value;
+	var add  =document.getElementById('address').value;
+	var phon  =document.getElementById('phone').value;
+	var email1  =document.getElementById('email').value;
+	var comid  =document.getElementById('commisionid').value;
+	var course  =document.getElementById('courseid').value;
+	var relgon  =document.getElementById('religion').value;
+	var padd  =document.getElementById('paddress').value;
+	var mob  =document.getElementById('mobile').value;
+	var pass  =document.getElementById('password').value;
+	var hight  =document.getElementById('height').value;
+	var captcha  =document.getElementById('captcha_code').value;
+	try
+	{
+	var cad=document.getElementById('cadet').value;
+	}
+	catch(exception)
+	{
+		var cad="";
+	}
+ 	var action='adddetail';
+ 	var dataparsed="&center="+selcenter+"&category="+cat+"&cadet="+cad+"&branch="+brnch+"&nic="+nicno+"&firstname="+name1+"&lastname="+name2+"&fathername="+fname+"&dob="+birthdate+"&gender="+gender1+"&marital="+maritalstat+"&province="+prov+"&district="+dist+"&tehsil="+teh+"&address="+add+"&phone="+phon+"&email="+email1+"&commisionid="+comid+"&courseid="+course+"&religion="+relgon+"&mobile="+mob+"&password="+pass+"&height="+hight+"&captcha="+captcha+"&paddress="+padd+"&xyz123="+action;
+	//document.getElementById(divid).innerHTML = '<span style="padding-left:40%;"><img src="../../images/loading_animation.gif" style=""  /></span>';
+	var callreq = new ajaxMultiLayerObject(divid, url);
+	//alert(url);
+	callreq.update(dataparsed);
+}
+
+function callajaxobject_applicant1(divid,url){
+	var selcenter  =document.getElementById('center').value;
+	var cat  =document.getElementById('category').value;
+	var brnch  =document.getElementById('branch').value;
+	var nicno  =document.getElementById('nic1').value;
+	var name1  =document.getElementById('firstname').value;
+	var name2  =document.getElementById('lastname').value;
+	var fname  =document.getElementById('fathername').value;
+	var birthdate  =document.getElementById('dob').value;
+	var gender1  =document.getElementById('gender').value;
+	var maritalstat  =document.getElementById('marital').value;
+	var prov  =document.getElementById('province').value;
+	var dist  =document.getElementById('district').value;
+	var teh  =document.getElementById('tehsil').value;
+	var add  =document.getElementById('address').value;
+	var phon  =document.getElementById('phone').value;
+	var email1  =document.getElementById('email').value;
+	var comid  =document.getElementById('commisionid').value;
+	var course  =document.getElementById('courseid').value;
+	var relgon  =document.getElementById('religion').value;
+	var mob  =document.getElementById('mobile').value;
+	var padd  =document.getElementById('paddress').value;
+	var pass  =document.getElementById('password').value;
+	var hight  =document.getElementById('height').value;
+	var captcha  =document.getElementById('captcha_code').value;
+	try
+	{
+	var cad=document.getElementById('cadet').value;
+	}
+	catch(exception)
+	{
+		var cad="";
+	}
+ 	var action='adddetail';
+ 	var dataparsed="&center="+selcenter+"&category="+cat+"&cadet="+cad+"&branch="+brnch+"&nic="+nicno+"&firstname="+name1+"&lastname="+name2+"&fathername="+fname+"&dob="+birthdate+"&gender="+gender1+"&marital="+maritalstat+"&province="+prov+"&district="+dist+"&tehsil="+teh+"&address="+add+"&phone="+phon+"&email="+email1+"&commisionid="+comid+"&courseid="+course+"&religion="+relgon+"&mobile="+mob+"&password="+pass+"&height="+hight+"&captcha="+captcha+"&paddress="+padd+"&xyz123="+action;
+	//document.getElementById(divid).innerHTML = '<span style="padding-left:40%;"><img src="../../images/loading_animation.gif" style=""  /></span>';
+	var callreq = new ajaxMultiLayerObject1(divid, url);
+	//alert(url);
+	callreq.update(dataparsed);
+}
+
+
+
+function callajaxobject_captcha(divid,url){
+
+ 	var action='validate_captcha';
+ 	var dataparsed="&captcha="+document.getElementById('captcha_code').value+"&xyz123="+action;
+	//document.getElementById(divid).innerHTML = '<span style="padding-left:40%;"><img src="../../images/loading_animation.gif" style=""  /></span>';
+	var callreq = new ajaxMultiLayerObject1(divid, url);
+	//alert(url);
+	callreq.update(dataparsed);
+}
+
+
+function nicnum(){
+	var nicno=document.getElementById('nic1').value;
+	
+}
+function showdist(divid,url,currntdiv,action){
+	var prov=document.getElementById(currntdiv).value;
+	var dataparsed="&value="+prov+"&xyz123="+action;
+	//alert(dataparsed);
+	document.getElementById(divid).innerHTML = '<span style="padding-left:40%;"><img src="../../images/loading_animation.gif" style=""  /></span>';
+	var callreq = new ajaxMultiLayerObject(divid, url);
+	callreq.update(dataparsed);
+}
+function checkqualification(divid,url){
+	var nicno  =document.getElementById('nic1').value;
+	var course  =document.getElementById('courseid').value;
+	var action='checkqualifications';
+		var dataparsed="&nic="+nicno+"&courseid="+course+"&xyz123="+action;
+	var callreq = new ajaxMultiLayerObject(divid, url);
+	callreq.update(dataparsed);
+}
+function creatsesion(divid,url,appid){
+		var action='createsession';
+		var dataparsed="&applicantid="+appid+"&xyz123="+action;
+		//alert(dataparsed);
+		var callreq = new ajaxMultiLayerObject(divid, url);
+		callreq.update(dataparsed);
+}
+function creatsesion1(divid,url,field){
+		var action='createsession1';
+		fieldval=document.getElementById(field).value;
+		var dataparsed="&field1="+field+"&fieldval1="+fieldval+"&xyz123="+action;
+		//alert(dataparsed);
+		var callreq = new ajaxMultiLayerObject(divid, url);
+		callreq.update(dataparsed);
+}
+function insertapplicant(divid,url){
+		var action='insertapplicantdata';
+		var field='';
+		//fieldval=document.getElementById(field).value;
+		var dataparsed="&field1="+field+"&xyz123="+action;
+		//alert(dataparsed);
+		var callreq = new ajaxMultiLayerObject(divid, url);
+		callreq.update(dataparsed);
+}
+function editqualification(divid,url,group,major,qualid){
+		var action='updatequalifcation';
+		document.getElementById('editgroup').value=group;
+		document.getElementById('editmajor').value=major;
+		document.getElementById('editqualid').value=qualid;
+		var varcoursid=document.getElementById('courseid').value;
+		var varcommid=document.getElementById('commisionid').value;
+		var varbranchid=document.getElementById('branchid').value;
+		//alert(qualid);
+		//var field='';
+		//fieldval=document.getElementById(field).value;
+		var dataparsed="&group_id="+group+"&majorid="+major+"&editqual="+qualid+"&courseid="+
+		varcoursid+"&comid="+varcommid+"&branchid="+varbranchid+"&xyz123="+action;
+		alert(dataparsed);
+//	var callreq = new ajaxMultiLayerObject(divid, url);
+//		callreq.update(dataparsed);
+		jQuery.post('files_z426/ajax/addqualification.php',{
+	 		'group_id':group,
+	 		'majorid':major,
+	 		'editqual':qualid,
+	 		'courseid':varcoursid,
+	 		'comid':varcommid,
+	 		'branchid':varbranchid,
+	 		'xyz123':action 		
+	 		},function(response){
+	 			jQuery("#major").html('');
+	 			jQuery("#major").append(response);
+	 		});
+}
+function deletequalification(divid,url,qaulid){
+	var action='deletequalification';
+ 	var dataparsed="&qualification="+qaulid+"&xyz123="+action;
+ 	alert(dataparsed);
+	var callreq = new ajaxMultiLayerObject(divid, url);
+		callreq.update(dataparsed);
+}
+function getmajor(divid,url){
+	var majid=document.getElementById('qualification').value;
+	var varcoursid=document.getElementById('courseid').value;
+	var varcommid=document.getElementById('commisionid').value;
+	var varbranchid=document.getElementById('branchid').value;
+	var action='getmajorsubjects';
+ 	var dataparsed="&majorid="+majid+"&courseid="+varcoursid+"&comid="+varcommid+"&branchid="+
+ 	varbranchid+"&xyz123="+action;
+	 //alert(dataparsed);
+//	var callreq = new ajaxMultiLayerObject(divid, url);
+//		callreq.update(dataparsed);
+ 	jQuery.post('files_z426/ajax/addqualification.php',{
+ 		'majorid':majid,
+ 		'courseid':varcoursid,
+ 		'comid':varcommid,
+ 		'branchid':varbranchid,
+ 		'xyz123':'getmajorsubjects' 		
+ 		},function(response){
+ 			jQuery("#major").html('');
+ 			jQuery("#major").append(response);
+ 		});
+}
+function getsubject(divid,url){
+	var qualid=document.getElementById('qualification').value;
+	var majid=document.getElementById('major').value;
+	var varcoursid=document.getElementById('courseid').value;
+	var varcommid=document.getElementById('commisionid').value;
+	var varbranchid=document.getElementById('branchid').value;
+	var action='getsubjects';
+ 	var dataparsed="&majorid="+majid+"&qualification="+qualid+
+ 	"&courseid="+varcoursid+"&comid="+varcommid+"&branchid="+varbranchid+"&xyz123="+action;
+ 	//alert(dataparsed);
+//	var callreq = new ajaxMultiLayerObject(divid, url);
+//		callreq.update(dataparsed);
+ 	jQuery.post('files_z426/ajax/addqualification.php',{
+ 		'majorid':majid,
+ 		'qualification':qualid,
+ 		'courseid':varcoursid,
+ 		'comid':varcommid,
+ 		'branchid':varbranchid,
+ 		'xyz123':'getsubjects' 		
+ 		},function(response){
+ 			jQuery("#subjects").html('');
+ 			jQuery("#subjects").append(response);
+ 		});
+}
+function myeditval(){
+	if(document.getElementById('editvariable').value==1){
+		return 'update';
+	}else{
+		return 'save';
+	}
+}
+function editpopup(){
+	$('#divqualification').css('display','none');
+	$('#popupContact').css('display','block');
+	
+	document.getElementById('add_qual_popup').click();
+}
+
+function select_innerHTML(objeto,innerHTML){
+	
+/******
+* select_innerHTML - corrige o bug do InnerHTML em selects no IE
+* Veja o problema em: http://support.microsoft.com/default.aspx?scid=kb;en-us;276228
+* Versão: 2.1 - 04/09/2007
+* Autor: Micox - Náiron José C. Guimarães - micoxjcg@yahoo.com.br
+* @objeto(tipo HTMLobject): o select a ser alterado
+* @innerHTML(tipo string): o novo valor do innerHTML
+*******/
+    objeto.innerHTML = "";
+    var selTemp = document.createElement("micoxselect");
+    var opt;
+    selTemp.id="micoxselect1";
+    document.body.appendChild(selTemp);
+    selTemp = document.getElementById("micoxselect1");
+    selTemp.style.display="none";
+    if(innerHTML.toLowerCase().indexOf("<option")<0){//se não é option eu converto
+        innerHTML = "<option>" + innerHTML + "</option>"
+    }
+    innerHTML = innerHTML.toLowerCase().replace(/<option/g,"<span").replace(/<\/option/g,"</span")
+    selTemp.innerHTML = innerHTML
+      
+    
+    for(var i=0;i<selTemp.childNodes.length;i++){
+  var spantemp = selTemp.childNodes[i];
+  
+        if(spantemp.tagName){     
+            opt = document.createElement("OPTION")
+    
+   if(document.all){ //IE
+  // alert("aaa");
+    objeto.appendChild(opt)
+   }else{
+    objeto.appendChild(opt)
+   }       
+    
+   //getting attributes
+   for(var j=0; j<spantemp.attributes.length ; j++){
+    var attrName = spantemp.attributes[j].nodeName;
+    var attrVal = spantemp.attributes[j].nodeValue;
+    if(attrVal){
+     try{
+      opt.setAttribute(attrName,attrVal);
+      opt.setAttributeNode(spantemp.attributes[j].cloneNode(true));
+     }catch(e){}
+    }
+   }
+   //getting styles
+   if(spantemp.style){
+    for(var y in spantemp.style){
+     try{opt.style[y] = spantemp.style[y];}catch(e){}
+    }
+   }
+   //value and text
+   opt.value = spantemp.getAttribute("value")
+   opt.text = spantemp.innerHTML
+   //IE
+   opt.selected = spantemp.getAttribute('selected');
+   opt.className = spantemp.className;
+  } 
+ }    
+ document.body.removeChild(selTemp)
+ selTemp = null
+
+}
+
+
+function checkField(which) {
+;
+}
+function isValid(elem,val) {
+	var dat="";
+	var ret=true;
+	var parm=document.getElementById(elem).value;
+	for (i=0; i<parm.length; i++) 
+	{
+	
+		if (val.indexOf(parm.charAt(i),0) == -1) 
+		{
+			//alert("Please enter alphabets only"); 
+			//document.getElementById('firstname').focus();
+			ret=false;
+		}
+		else
+		{
+			dat=dat+parm.charAt(i);
+		}
+	}
+	document.getElementById(elem).value=dat;
+	if(ret==true)
+	return true;
+	else
+	return false;
+}
+function isAlphabet(elem, helperMsg){
+	
+	var lwr = 'abcdefghijklmnopqrstuvwxyz';
+var upr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ';
+	return isValid(elem,lwr+upr);
+	
+	/*return false;
+var string = document.getElementById('firstname').value;
+if (/[^a-z]/gi.test(string)) {
+alert ("Only alpha characters are valid in this field"); // no spaces, full stops or anything but A-Z
+document.getElementById('firstname').value = "";
+document.getElementById('firstname').focus();
+return false;
+}
+	
+	
+	return true;
+	var alphaExp = /^[a-zA-Z-\s-\b-\r-\t]+$/;
+	var val=document.getElementById(elem).value;
+	//alert(val);
+	if(val.match(alphaExp)){
+		return true;
+	}else{
+		alert("Please enter characters only");
+		document.getElementById(elem).focus();
+		//elem.focus();
+		return false;
+	}*/
+}
+function checkmarks(){
+	var marksobt=document.getElementById('marksobt').value;
+	var marktotal=document.getElementById('markstotal').value;
+	if( parseInt(marksobt, 10) > parseInt(marktotal, 10)){
+		alert("Please enter marks less than total marks");
+		document.getElementById('markstotal').focus();
+	}
+}
+
+/*function validatequal(f)
+{
+	//alert("HERE");
+	var marksobt=document.getElementById('marksobt').value;
+	var marktotal=document.getElementById('markstotal').value;
+	var qual=document.getElementById('qualification').value;
+	var maj=document.getElementById('major').value;
+	var subj=document.getElementById('subjects').value;
+	var percentagereq=document.getElementById('percentage').value;
+	var percentage= (parseInt(marksobt, 10)/parseInt(marktotal, 10))*100;
+	if(qual=="")
+	{
+		alert("Please select qualifications");
+		document.getElementById('qualification').focus();
+		return false;
+	}
+	if(maj=="")
+	{
+		alert("Please select Major");
+		document.getElementById('major').focus();
+		return false;
+	}
+	if(subj=="")
+	{
+		alert("Please select subjects");
+		document.getElementById('subjects').focus();
+		return false;
+	}
+	if(marksobt=="")
+	{
+		alert("Please enter marks obtained");
+		document.getElementById('marksobt').focus();
+		return false;
+	}
+	
+	if(marktotal=="")
+	{
+		alert("Please enter marks total");
+		document.getElementById('marktotal').focus();
+		return false;
+	}
+	
+	
+	if( parseInt(marksobt, 10) > parseInt(marktotal, 10)){
+		alert("Please enter marks less than total marks");
+		document.getElementById('markstotal').focus();
+		return false;
+	}
+	if( percentage < parseInt(percentagereq, 10)){
+		alert("Sorry your percentage marks is less than minimum required percentage");
+		document.getElementById('marksobt').focus();
+		return false;
+	}
+	
+	var d = new Date();
+	var year=d.getFullYear();
+	var enteryear=document.getElementById('passingyear').value;
+	
+	if(enteryear=="")
+	{
+		alert("Please enter passing year");
+		document.getElementById('enteryear').focus();
+		return false;
+	}
+	
+	if(parseInt(enteryear) > parseInt(year)){
+	alert('Please Year passing year less than '+year);
+	document.getElementById('passingyear').focus();
+	return false;
+	}
+	else if(parseInt(enteryear) < 1970){
+	alert('Please Year passing year greater than 1970');
+	document.getElementById('passingyear').focus();
+	return false;
+	}
+	disablePopup();
+	callajaxobject('divqualification','files_z426/ajax/addqualification.php','editgroup','editmajor');
+	return true;
+}*/
+
+function validatequal(f)
+{
+    //alert("HERE");
+    var marksobt=document.getElementById('marksobt').value;
+    var marktotal=document.getElementById('markstotal').value;
+    var qual=document.getElementById('qualification').value;
+    var maj=document.getElementById('major').value;
+    var subj=document.getElementById('subjects').value;
+    var percentagereq=document.getElementById('percentage').value;
+    var percentage= (parseFloat(marksobt, 10)/parseInt(marktotal, 10))*100;
+    //alert(percentage);
+    if(qual=="")
+    {
+        alert("Please select qualifications");
+        document.getElementById('qualification').focus();
+        return false;
+    }
+    if(maj=="")
+    {
+        alert("Please select Major");
+        document.getElementById('major').focus();
+        return false;
+    }
+    if(subj=="")
+    {
+        alert("Please select subjects");
+        document.getElementById('subjects').focus();
+        return false;
+    }
+    if(marksobt=="")
+    {
+        alert("Please enter marks obtained");
+        document.getElementById('marksobt').focus();
+        return false;
+    }
+   
+    if(marktotal=="")
+    {
+        alert("Please enter marks total");
+        document.getElementById('marktotal').focus();
+        return false;
+    }
+   
+   
+    if( parseInt(marksobt, 10) > parseInt(marktotal, 10)){
+        alert("Please enter marks less than total marks");
+        document.getElementById('markstotal').focus();
+        return false;
+    }
+    if( percentage < parseInt(percentagereq, 10)){
+        //alert(percentage);
+        alert("Sorry your percentage marks is less than minimum required percentage");
+        document.getElementById('marksobt').focus();
+        return false;
+    }
+   
+    var d = new Date();
+    var year=d.getFullYear();
+    var enteryear=document.getElementById('passingyear').value;
+   
+    if(enteryear=="")
+    {
+        alert("Please enter passing year");
+        document.getElementById('enteryear').focus();
+        return false;
+    }
+   
+    if(parseInt(enteryear) > parseInt(year)){
+    alert('Please Year passing year less than '+year);
+    document.getElementById('passingyear').focus();
+    return false;
+    }
+    else if(parseInt(enteryear) < 1970){
+    alert('Please Year passing year greater than 1970');
+    document.getElementById('passingyear').focus();
+    return false;
+    }
+    
+    jQuery.post('files_z426/ajax/addqualification.php',{
+ 		 
+ 		'qualification':jQuery("#qualification").val(),
+ 		'major':jQuery("#major").val(),
+ 		'marksobt':jQuery("#marksobt").val(),
+ 		'markstotal':jQuery("#markstotal").val(),
+ 		'board':jQuery("#board").val(),
+ 		'passingyear':jQuery("#passingyear").val(),
+ 		'subjects':jQuery("#subjects").val(),
+ 		'xyz123':'addqualification' 		
+ 		},function(response){
+ 			jQuery("#divqualification").html('');
+ 			jQuery("#popupContact").css("display","none");
+ 			jQuery("#button1").hide();
+ 			jQuery("#divqualification").html(response);
+ 			return true;
+ 		});
+//    callajaxobject('divqualification','files_z426/ajax/addqualification.php','editgroup','editmajor');
+//    return true;
+}
+function checkyear(){
+	var d = new Date();
+	var year=d.getFullYear();
+	var enteryear=document.getElementById('passingyear').value;
+	if(parseInt(enteryear) > parseInt(year)){
+	alert('Please Year passing year less than '+year);
+	document.getElementById('passingyear').focus();
+	return false;
+	}
+	else if(parseInt(enteryear) < 1970){
+	alert('Please Year passing year greater than 1970');
+	document.getElementById('passingyear').focus();
+	return false;
+	}
+	return true;
+}
+
+
+/*function checkIt(evt) {
+    evt = (evt) ? evt : window.event
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        status = "This field accepts numbers only."
+		alert(status);
+        return false
+    }
+    status = ""
+    return true
+}*/
+
+function checkIt(evt) {
+    evt = (evt) ? evt : window.event
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 46 || charCode > 57 || charCode == 47)) {
+        status = "This field accepts numbers only."
+        alert(status);
+        return false
+    }
+    status = ""
+    return true
+}
+
+function formsubmt(){
+	document.getElementById('generate').click();
+}
+function ward(accup){
+	if((accup==4)||((accup!=1)&&(accup!=2)&&(accup!=3))){
+	document.getElementById('occupation').style.display = 'block' ;
+	document.getElementById('faccup').style.display = 'block' ;
+	document.getElementById('pafward').style.display = 'none' ;
+	}else{
+	document.getElementById('occupation').value='';
+	}
+	}
+	function autocall(accup){
+		if((accup==4)||((accup!=1)&&(accup!=2)&&(accup!=3))){
+		document.getElementById('occupation').style.display = 'block' ;
+		document.getElementById('pafward').style.display = 'none' ;
+		}
+	}
