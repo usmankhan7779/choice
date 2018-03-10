@@ -19,185 +19,178 @@
       <!-- <mat-paginator [length]="100" [pageSize]="20" [pageSizeOptions]="[5, 10, 25, 100]" (change)="_changePageSize($event.value)">
       </mat-paginator> -->
 
+       
+        <div class="products-area" *ngIf="prod_loaded;else no_data_templ">
+          <div class="card" *ngFor="let data of sg['products']; let i = index">
+            <div class="row">
 
-      <div class="products-area" *ngIf="prod_loaded;else no_data_templ">
-        <div class="card" *ngFor="let data of sg['products']; let i = index">
-          <div class="row">
+              <div class="col-sm-12">
+                <div class="card-header card-header-text" data-background-color="rose">
 
-            <div class="col-sm-12">
-              <div class="card-header card-header-text" data-background-color="rose">
+                  <h4 class="card-title">{{data.title}} </h4>
 
-                <h4 class="card-title">{{data.title}} </h4>
-
-              </div>
+                </div>
 
               <div class="card-content">
                 <div class="col-md-4  col-sm-3 col-xs-5 plan-detail text-center">
-                    <div *ngIf="data.profile_logo;else no_data_temp2">
-
                   <a href="{{data.profileurl}}" target="_blank">
-                  
-                      <img src="{{data.profile_logo}}" alt="{{data.title}}" />
+                   
+                    <img src="{{data.profile_logo}}" alt="{{data.title}}" />
                   </a>
-                  </div>
-                  <ng-template #no_data_temp2>
-<h1>hhh</h1>
-                    <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
-                    <img src="../../assets/img/bulb.png"/>
-                  </ng-template>
+                
 
                   <img src="{{data.rating_logo}}" />
+             
 
+                    <!-- <br> <star-rating-comp [size]="'large'" [starType]="'svg'" [rating]="" [(ngModel)]="rating"></star-rating-comp>  -->
 
-                  <!-- <br> <star-rating-comp [size]="'large'" [starType]="'svg'" [rating]="" [(ngModel)]="rating"></star-rating-comp>  -->
-
-                </div>
-
-
-
-                <div class="col-md-4 col-sm-5 col-xs-5 rate" style="width: 450px">
-                  <h3 style=" text-align: center">
-                    <b> Price</b>
-                  </h3>
-
-                  <!-- <div class="holder white"> -->
-                  <!--class="product-price"-->
-                  <div class="">
-
-                    <h3 *ngFor="let items of data.price_rate" class="text-center">
-                      ${{items}}
-                    </h3>
                   </div>
-                  <!-- </div> -->
-                  <!-- <small>{{data.display_uom}}</small> -->
-                  <!-- <br /> -->
 
-                  <!-- <small><b>$69.99 </b></small> -->
-                </div>
-                <br>
-                <div class="col-md-4 col-sm-3 col-xs-7 term">
 
-                  <h3 class="text-center">
-                    <b> Call now</b>
-                  </h3>
-                  <h3 class="text-center">{{data.phone}}</h3>
-                  <!-- (click)="openDialog(data.id)" -->
-                  <button class="btn btn-rose" style="display:block; margin: 0 auto;">
-                    <a style="color:white" href="{{data.profileurl}}" target="_blank">Signup </a>
-                    <i class="material-icons">bubble_chart</i>
-                  </button>
 
-                </div>
-                <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
+                  <div class="col-md-4 col-sm-5 col-xs-5 rate" style="width: 450px">
+                    <h3 style=" text-align: center">
+                      <b> Price</b>
+                    </h3>
+
+                    <!-- <div class="holder white"> -->
+                    <!--class="product-price"-->
+                    <div class="">
+
+                      <h3 *ngFor="let items of data.price_rate" class="text-center">
+                        ${{items}}
+                      </h3>
+                    </div>
+                    <!-- </div> -->
+                    <!-- <small>{{data.display_uom}}</small> -->
+                    <!-- <br /> -->
+
+                    <!-- <small><b>$69.99 </b></small> -->
+                  </div>
+                  <br>
+                  <div class="col-md-4 col-sm-3 col-xs-7 term">
+
+                    <h3 class="text-center">
+                      <b> Call now</b>
+                    </h3>
+                    <h3 class="text-center">{{data.phone}}</h3>
+                    <!-- (click)="openDialog(data.id)" -->
+                    <button class="btn btn-rose" style="display:block; margin: 0 auto;">
+                      <a style="color:white" href="{{data.profileurl}}" target="_blank">Signup </a>
+                      <i class="material-icons">bubble_chart</i>
+                    </button>
+
+                  </div>
+                  <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
 (click)="signUp(data.product_id)"
 
 
 
 </div> -->
-                <div class="col-sm-12">
-                  <a href="#p-pane-{{i}}" class="view-more collapsed" data-toggle="collapse">
-                    View more
-                    <i class="material-icons">arrow_drop_down</i>
-                  </a>
+                  <div class="col-sm-12">
+                    <a href="#p-pane-{{i}}" class="view-more collapsed" data-toggle="collapse">
+                      View more
+                      <i class="material-icons">arrow_drop_down</i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="clearfix"></div>
-          <div id="p-pane-{{i}}" class="panel-details collapse">
-            <br />
-            <div class="row">
-              <div class="col-sm-6">
-                <h3 style="padding:0 20px;background:#cecece">Plan Information</h3>
-                <div class="text-justify">
+            <div class="clearfix"></div>
+            <div id="p-pane-{{i}}" class="panel-details collapse">
+              <br />
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3 style="padding:0 20px;background:#cecece">Plan Information</h3>
+                  <div class="text-justify">
 
-                  <p *ngFor="let itemss of data.plan_information">
-                    {{itemss}}
-                  </p>
+                    <p *ngFor="let itemss of data.plan_information">
+                      {{itemss}}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-6">
-                <h3 style="padding:0 20px;background:#cecece">
-                  Cancellation Fee
-                  <!-- <b>{{data.cancelation_fee}}</b> -->
-                </h3>
+                <div class="col-sm-6">
+                  <h3 style="padding:0 20px;background:#cecece">
+                    Cancellation Fee
+                    <!-- <b>{{data.cancelation_fee}}</b> -->
+                  </h3>
 
-                <h4 *ngIf="data.cancelation_fee;else no_data_temp2">
-                  &nbsp;&nbsp;&nbsp;&nbsp; {{data.cancelation_fee.split(' ',3000)[2]}}
-                </h4>
+                  <h4 *ngIf="data.cancelation_fee;else no_data_temp2">
+                    &nbsp;&nbsp;&nbsp;&nbsp; {{data.cancelation_fee.split(' ',3000)[2]}}
+                  </h4>
+                 
+                  <ng-template #no_data_temp2>
 
-                <ng-template #no_data_temp2>
+                    <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp; ---</h4>
+                  </ng-template>
 
-                  <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
-                  <h4>&nbsp;&nbsp;&nbsp;&nbsp; ---</h4>
-                </ng-template>
+                  <!-- <hr/> -->
 
-                <!-- <hr/> -->
+                  <h3 style="padding:0 20px;background:#cecece">Plan Document</h3>
+                  <ul>
+                    <li style="color:transparent">
+                      <a style="color:rgba(0,0,0, 0.87)" href="{{data.terms_of_service}}" target="_blank">
+                        <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                        Terms of service
+                      </a>
+                    </li>
 
-                <h3 style="padding:0 20px;background:#cecece">Plan Document</h3>
-                <ul>
-                  <li style="color:transparent">
-                    <a style="color:rgba(0,0,0, 0.87)" href="{{data.terms_of_service}}" target="_blank">
-                      <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
-                      Terms of service
-                    </a>
-                  </li>
+                    <li style="color:transparent">
+                      <a style="color:rgba(0,0,0, 0.87)" href="{{data.fact_sheet}}" target="_blank">
+                        <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                        Fact Sheet
+                      </a>
+                    </li>
+                  </ul>
+                </div>
 
-                  <li style="color:transparent">
-                    <a style="color:rgba(0,0,0, 0.87)" href="{{data.fact_sheet}}" target="_blank">
-                      <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
-                      Fact Sheet
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                <br>
 
-              <br>
+                <div class="col-sm-12 ">
 
-              <div class="col-sm-12 ">
+                </div>
 
-              </div>
+                <div class="col-sm-12">
+                  <!--<h4>Rates Detail:</h4>-->
+                  <div class="table">
+                    <table class="table-normal">
+                      <thead>
+                        <tr>
+                          <td>
+                            Average Monthly Use
+                          </td>
+                          <td>
+                            Average Price per kWh
+                          </td>
+                        </tr>
+                      </thead>
 
-              <div class="col-sm-12">
-                <!--<h4>Rates Detail:</h4>-->
-                <div class="table">
-                  <table class="table-normal">
-                    <thead>
-                      <tr>
-                        <td>
-                          Average Monthly Use
-                        </td>
-                        <td>
-                          Average Price per kWh
-                        </td>
-                      </tr>
-                    </thead>
+                      <tbody *ngFor="let items of data.price_rate">
+                        <tr>
 
-                    <tbody *ngFor="let items of data.price_rate">
-                      <tr>
-
-                        <td>
-                          <h2 style="font-size: 20px">{{ items.split(' ',3000)[0]}} KWH </h2>
-                        </td>
-                        <td>
-                          <h2 style="font-size: 20px"> {{ items.split(' ',3000)[2]}} $</h2>
-                        </td>
-                        <!-- <td><h4>$ 15.20</h4></td> -->
-                      </tr>
-                      <!-- <tr>
+                          <td>
+                            <h2 style="font-size: 20px">{{ items.split(' ',3000)[0]}} KWH </h2>
+                          </td>
+                          <td>
+                            <h2 style="font-size: 20px"> {{ items.split(' ',3000)[2]}} $</h2>
+                          </td>
+                          <!-- <td><h4>$ 15.20</h4></td> -->
+                        </tr>
+                        <!-- <tr>
 <td><h4>1000 kWh</h4></td>
 <td><h4>$ 13.60</h4></td>
 </tr> -->
-                    </tbody>
-                  </table>
+                      </tbody>
+                    </table>
 
+                  </div>
                 </div>
+
               </div>
-
             </div>
-          </div>
 
-          <!-- <div class="col-sm-12 col-md-6">
+            <!-- <div class="col-sm-12 col-md-6">
 <h4>Get your year-pass savings:</h4>
 <ul>
 <li>Keep your bills mild when the weather gets wild, and get a low rate in between.*</li>
@@ -229,19 +222,19 @@ Fact Sheet
 </div> -->
 
 
+          </div>
         </div>
-      </div>
-      <span>
-        <ng-template #no_data_templ>
+        <span>
+          <ng-template #no_data_templ  >
 
-          <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
-          <h1 style="height:1000px;width:1000px;padding:200px">
-
-            <!-- <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Record Found</b> -->
-          </h1>
-        </ng-template>
-      </span>
-
+              <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+              <h1 style="height:1000px;width:1000px;padding:200px">
+                
+                <!-- <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Record Found</b> -->
+              </h1>
+            </ng-template>
+          </span>
+     
     </div>
   </div>
 </div>
