@@ -63,7 +63,7 @@
                 <div class="form-group">
                   <h5 class="control-label">Email</h5>
                   <mat-form-field>
-                    <input matInput placeholder="Email" [formControl]="signupForm.controls['email']" required [(ngModel)]="model.email" >
+                    <input matInput placeholder="Email" [formControl]="signupForm.controls['email']" required [(ngModel)]="model.email" name="email">
                     <!-- <mat-error *ngIf="secondFormGroup.controls.Email.dirty && !secondFormGroup.controls.Email.value"> Special characters not allowed</mat-error> -->
                   </mat-form-field>
                 </div>

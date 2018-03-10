@@ -33,17 +33,17 @@
 
               <div class="card-content">
                 <div class="col-md-4  col-sm-3 col-xs-5 plan-detail text-center">
-                    <div *ngIf="data.profile_logo;else no_data_temp2">
+                  <div *ngIf="data.profile_logo;else no_data_temp2">
 
-                  <a href="{{data.profileurl}}" target="_blank">
-                  
+                    <a href="{{data.profileurl}}" target="_blank">
+
                       <img src="{{data.profile_logo}}" alt="{{data.title}}" />
-                  </a>
+                    </a>
                   </div>
                   <ng-template #no_data_temp2>
-<h1>hhh</h1>
+                    <h1>hhh</h1>
                     <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
-                    <img src="../../assets/img/bulb.png"/>
+                    <img src="../../assets/img/bulb.png" />
                   </ng-template>
 
                   <img src="{{data.rating_logo}}" />
@@ -65,7 +65,7 @@
                   <div class="">
 
                     <h3 *ngFor="let items of data.price_rate" class="text-center">
-                      ${{items}}
+                      {{items}}¢
                     </h3>
                   </div>
                   <!-- </div> -->
@@ -111,9 +111,16 @@
                 <h3 style="padding:0 20px;background:#cecece">Plan Information</h3>
                 <div class="text-justify">
 
-                  <p *ngFor="let itemss of data.plan_information">
-                    {{itemss}}
-                  </p>
+                  <ul>
+                    
+                      <p *ngFor="let itemss of data.plan_information">
+                        
+                        {{itemss}}
+                    
+                      </p>
+                  
+                  </ul>
+
                 </div>
               </div>
               <div class="col-sm-6">
