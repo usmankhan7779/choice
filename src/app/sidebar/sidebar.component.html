@@ -106,7 +106,9 @@
                 </ul>
             </div>
             <div class="nav-container">
-                <ul class="nav">
+                <ul class="nav" style="
+                display:  inherit;
+            ">
                     <li routerLinkActive="active" *ngFor="let menuitem of menuItems">
                         <!--If is a single link-->
                         <a [routerLink]="[menuitem.path]" *ngIf="menuitem.type === 'link'">
@@ -131,12 +133,12 @@
                             </ul>
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="http://md-pro-angular.creative-tim.com/documentation/tutorial?ref=md-pro-archive">
                             <i class="material-icons">school</i>
                             <p>Documentation</p>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
