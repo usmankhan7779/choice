@@ -29,7 +29,7 @@ import { PasswordValidation } from './password-validator.component';
 export class Signup1Component implements OnInit {
  state;
   city;
- 
+ username;
   confirmpassword;
   signupForm: FormGroup;
  private next:any;
@@ -97,11 +97,11 @@ emailauthentication() {
   // alert(this.premiseID.toString().length)
   //  alert('hello');
   console.log(this.model.email);
-  if(this.model.email){
+ 
   let headers = new HttpHeaders();
   headers.append('Content-Type', 'application/json');
   // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-  this.http.post(Config.api +'authenticade_code/',{"email": this.model.email},{ headers: headers })
+  this.http.post(Config.api +'code/'+this.model.username,{ headers: headers })
 
       //  this.http.get(Config.api + 'signup/'+ this.zip_code +'', {headers: headers})
       .subscribe(Res => {
@@ -119,7 +119,7 @@ emailauthentication() {
           // this.data.changeProducts(this.sg['products']);
 
       });
-}}
+}
   states() {
     // alert(this.premiseID.toString().length)
     //  alert('hello');

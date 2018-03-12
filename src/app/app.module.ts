@@ -74,6 +74,7 @@ import {LoginComponent } from './../app/pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
 import { ResidentialService } from './residential/residential-dialog2/residential.service';
 import { ContactusComponent } from './contactus/contactus.component';
+import { PagerService } from './pager.service';
 
 
 @NgModule({
@@ -155,6 +156,7 @@ export class MaterialModule {}
     DataService,
     SweetAlertService,
     LoginService,
+    PagerService,
 ResidentialService
   ],
   bootstrap: [AppComponent],
