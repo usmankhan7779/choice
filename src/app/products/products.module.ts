@@ -13,7 +13,6 @@ import {ProductsRoutes} from './products.routing';
 import {PremiseDialog} from './products.component';
 //import {  plandetailDialog} from './products.component';
 
-import {StarRatingModule} from 'angular-star-rating';
 import { HomeService } from '../home/home.service';
 import { SimpleGlobal } from 'ng2-simple-global';
 // import { Pipe, PipeTransform } from "@angular/core";
@@ -25,8 +24,7 @@ import { SimpleGlobal } from 'ng2-simple-global';
         FormsModule,
         MdModule,
         MaterialModule,
-      HttpClientModule,
-      StarRatingModule
+      HttpClientModule
     ],
     declarations: [
         ProductsComponent,
