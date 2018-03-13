@@ -18,13 +18,13 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "styles": [
+      "styles": [  
         "styles.scss",
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "./assets/sass/material-dashboard.scss",
-        "../node_modules/angular-star-rating/assets/scss/star-rating.scss",
         "../node_modules/sweetalert2/dist/sweetalert2.css", 
-        "../node_modules/slick-carousel/slick/slick.css"
+        "../node_modules/slick-carousel/slick/slick.css" 
+      
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
