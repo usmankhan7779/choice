@@ -1,302 +1,271 @@
-<div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="orange">
-                        <i class="material-icons">weekend</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Bookings</p>
-                        <h3 class="card-title">184</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons text-danger">warning</i>
-                            <a href="#pablo">Get More Space...</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="red">
-                        <i class="material-icons">equalizer</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Views</p>
-                        <h3 class="card-title">75.521</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">local_offer</i> Google Analytics
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="green">
-                        <i class="material-icons">store</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Revenue</p>
-                        <h3 class="card-title">$3,245</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> Last 24 Hours
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="blue">
-                        <i class="fa fa-twitter"></i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Followers</p>
-                        <h3 class="card-title">+245</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">update</i> Just Updated
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- <h5>Items per Page</h5>
+        <mat-form-field >
+        <mat-select  (ngModelChange)="check($event)" [(ngModel)]="items"  >
+          <mat-option value="5" style="font-size: 20px">5</mat-option>
+          <mat-option value="10" style="font-size: 20px">10 </mat-option>
+          <mat-option value="20" style="font-size: 20px">20 </mat-option>
+        </mat-select>
+        </mat-form-field> -->
 
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="card card-product">
-                    <div class="card-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="../assets/img/card-2.jpeg">
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple"  matTooltip="View" [matTooltipPosition]="'below'">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-simple"  matTooltip="Edit" [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-simple" matTooltip="Remove" [matTooltipPosition]="'below'">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Cozy 5 Stars Apartment</a>
-                        </h4>
-                        <div class="card-description">
-                            The place is close to Barceloneta Beach and bus stop just 2 min by walk and...
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$899/night</h4>
-                        </div>
-                        <div class="stats pull-right">
-                            <p class="category"><i class="material-icons">place</i> Barcelona, Spain</p>
-                        </div>
-                    </div>
+        <div class="main-content custom">
+            <!-- <div class="container-fluid"> -->
+            <div class="row">
+              <div class="col-sm-12">
+          
+                <div class="page-title">
+                  <span>Product Search</span>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card card-product">
-                    <div class="card-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="../assets/img/card-3.jpeg">
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="View" [matTooltipPosition]="'below'">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-simple" matTooltip="Edit" [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-simple" matTooltip="Remove" [matTooltipPosition]="'below'">
-                                <i class="material-icons">close</i>
-                            </button>
+                <!-- </div> -->
+                <!-- <mat-paginator [length]="100" [pageSize]="20" [pageSizeOptions]="[5, 10, 25, 100]" (change)="_changePageSize($event.value)">
+                </mat-paginator> -->
+          
+                 
+                  <div class="products-area" *ngIf="prod_loaded;else no_data_templ">
+                    <div class="card" *ngFor="let data of sg['products']; let i = index">
+                      <div class="row">
+          
+                        <div class="col-sm-12">
+                          <div class="card-header card-header-text" data-background-color="rose">
+          
+                            <h4 class="card-title">{{data.title}} </h4>
+          
+                          </div>
+          
+                        <div class="card-content">
+                          <div class="col-md-4  col-sm-3 col-xs-5 plan-detail text-center">
+                            <a href="{{data.profileurl}}" target="_blank">
+                             
+                              <img src="{{data.profile_logo}}" alt="{{data.title}}" />
+                            </a>
+                          
+          
+                            <img src="{{data.rating_logo}}" />
+                       
+          
+                              <!-- <br> <star-rating-comp [size]="'large'" [starType]="'svg'" [rating]="" [(ngModel)]="rating"></star-rating-comp>  -->
+          
+                            </div>
+          
+          
+          
+                            <div class="col-md-4 col-sm-5 col-xs-5 rate" style="width: 450px">
+                              <h3 style=" text-align: center">
+                                <b> Price</b>
+                              </h3>
+          
+                              <!-- <div class="holder white"> -->
+                              <!--class="product-price"-->
+                              <div class="">
+          
+                                <h3 *ngFor="let items of data.price_rate" class="text-center">
+                                  {{items}}¢
+                                </h3>
+                              </div>
+                              <!-- </div> -->
+                              <!-- <small>{{data.display_uom}}</small> -->
+                              <!-- <br /> -->
+          
+                              <!-- <small><b>$69.99 </b></small> -->
+                            </div>
+                            <br>
+                            <div class="col-md-4 col-sm-3 col-xs-7 term">
+          
+                              <h3 class="text-center">
+                                <b> Call now</b>
+                              </h3>
+                              <h3 class="text-center">{{data.phone}}</h3>
+                              <!-- (click)="openDialog(data.id)" -->
+                              <button class="btn btn-rose" style="display:block; margin: 0 auto;">
+                                <a style="color:white" href="{{data.profileurl}}" target="_blank">Signup </a>
+                                <i class="material-icons">bubble_chart</i>
+                              </button>
+          
+                            </div>
+                            <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
+          (click)="signUp(data.product_id)"
+          
+          
+          
+          </div> -->
+                            <div class="col-sm-12">
+                              <a href="#p-pane-{{i}}" class="view-more collapsed" data-toggle="collapse">
+                                View more
+                                <i class="material-icons">arrow_drop_down</i>
+                              </a>
+                            </div>
+                          </div>
                         </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Office Studio</a>
-                        </h4>
-                        <div class="card-description">
-                            The place is close to Metro Station and bus stop just 2 min by walk and near...
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$1.119/night</h4>
-                        </div>
-                        <div class="stats pull-right">
-                            <p class="category"><i class="material-icons">place</i> London, UK</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card card-product">
-                    <div class="card-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="../assets/img/card-1.jpeg">
-                        </a>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="View" [matTooltipPosition]="'below'">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-simple" matTooltip="Edit" [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-simple" matTooltip="Remove" [matTooltipPosition]="'below'">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Beautiful Castle</a>
-                        </h4>
-                        <div class="card-description">
-                            The place is close to Metro Station and bus stop just 2 min by walk and near...
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$459/night</h4>
-                        </div>
-                        <div class="stats pull-right">
-                            <p class="category"><i class="material-icons">place</i> Milan, Italy</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-icon" data-background-color="red">
-                        <i class="material-icons">language</i>
-                    </div>
-                    <div class="card-content">
-                        <h4 class="card-title">Global Sales by Top Locations</h4>
+                      </div>
+                      <div class="clearfix"></div>
+                      <div id="p-pane-{{i}}" class="panel-details collapse">
+                        <br />
                         <div class="row">
-                            <div class="col-md-5">
-                                <app-md-table
-                                  [data]="tableData">
-                              </app-md-table>
+                          <div class="col-sm-6">
+                            <h3 style="padding:0 20px;background:#cecece">Plan Information</h3>
+                            <div class="text-justify">
+          
+                              <p *ngFor="let itemss of data.plan_information">
+                                {{itemss}}
+                              </p>
                             </div>
-                            <div class="col-md-6 col-md-offset-1">
-                                <div id="worldMap" class="map"></div>
+                          </div>
+                          <div class="col-sm-6">
+                            <h3 style="padding:0 20px;background:#cecece">
+                              Cancellation Fee
+                              <!-- <b>{{data.cancelation_fee}}</b> -->
+                            </h3>
+          
+                            <h4 *ngIf="data.cancelation_fee;else no_data_temp2">
+                              &nbsp;&nbsp;&nbsp;&nbsp; {{data.cancelation_fee.split(' ',3000)[2]}}
+                            </h4>
+                           
+                            <ng-template #no_data_temp2>
+          
+                              <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                              <h4>&nbsp;&nbsp;&nbsp;&nbsp; ---</h4>
+                            </ng-template>
+          
+                            <!-- <hr/> -->
+          
+                            <h3 style="padding:0 20px;background:#cecece">Plan Document</h3>
+                            <ul>
+                              <li style="color:transparent">
+                                <a style="color:rgba(0,0,0, 0.87)" href="{{data.terms_of_service}}" target="_blank">
+                                  <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                                  Terms of service
+                                </a>
+                              </li>
+          
+                              <li style="color:transparent">
+                                <a style="color:rgba(0,0,0, 0.87)" href="{{data.fact_sheet}}" target="_blank">
+                                  <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                                  Fact Sheet
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+          
+                          <br>
+          
+                          <div class="col-sm-12 ">
+          
+                          </div>
+          
+                          <div class="col-sm-12">
+                            <!--<h4>Rates Detail:</h4>-->
+                            <div class="table">
+                              <table class="table-normal">
+                                <thead>
+                                  <tr>
+                                    <td>
+                                      Average Monthly Use
+                                    </td>
+                                    <td>
+                                      Average Price per kWh
+                                    </td>
+                                  </tr>
+                                </thead>
+          
+                                <tbody *ngFor="let items of data.price_rate">
+                                  <tr>
+          
+                                    <td>
+                                      <h2 style="font-size: 20px">{{ items.split(' ',3000)[0]}} KWH </h2>
+                                    </td>
+                                    <td>
+                                      <h2 style="font-size: 20px"> {{ items.split(' ',3000)[2]}} $</h2>
+                                    </td>
+                                    <!-- <td><h4>$ 15.20</h4></td> -->
+                                  </tr>
+                                  <!-- <tr>
+          <td><h4>1000 kWh</h4></td>
+          <td><h4>$ 13.60</h4></td>
+          </tr> -->
+                                </tbody>
+                              </table>
+          
                             </div>
+                          </div>
+          
                         </div>
+                      </div>
+          
+                      <!-- <div class="col-sm-12 col-md-6">
+          <h4>Get your year-pass savings:</h4>
+          <ul>
+          <li>Keep your bills mild when the weather gets wild, and get a low rate in between.*</li>
+          <li>In summer and winter months, see the Season Pass Savings right on your bill.
+          
+          </li>
+          </ul>
+          <h5>Plan Documents</h5>
+          <ul class="list-normal">
+          <li>
+          <a href="{{data.terms_of_service}}" target="_blank">
+          <i class="material-icons">picture_as_pdf</i>
+          Terms of service
+          </a>
+          </li>
+          <li>
+          <a href="#">
+          <i class="material-icons">picture_as_pdf</i>
+          Your rights as a Customer
+          </a>
+          </li>
+          <li>
+          <a href="{{data.fact_sheet}}" target="_blank">
+          <i class="material-icons">picture_as_pdf</i>
+          Fact Sheet
+          </a>
+          </li>
+          </ul>
+          </div> -->
+          
+          
                     </div>
-                </div>
+                  </div>
+                  <span>
+                    <ng-template #no_data_templ  >
+          
+                        <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                        <h1 style="height:1000px;width:1000px;padding:200px">
+                          
+                          <!-- <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Record Found</b> -->
+                        </h1>
+                      </ng-template>
+                    </span>
+               
+              </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card card-chart">
-                    <div class="card-header" data-background-color="green" data-header-animation="true">
-                        <div class="ct-chart" id="dailySalesChart"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-info btn-simple" matTooltip="Refresh" [matTooltipPosition]="'below'">
-                                <i class="material-icons">refresh</i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="Change Date" [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">Daily Sales</h4>
-                        <p class="category">
-                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> updated 4 minutes ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-chart">
-                    <div class="card-header" data-background-color="orange" data-header-animation="true">
-                        <div class="ct-chart" id="completedTasksChart"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-info btn-simple" matTooltip="Refresh" [matTooltipPosition]="'below'">
-                                <i class="material-icons">refresh</i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="Change Date" [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">Completed Tasks</h4>
-                        <p class="category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-chart">
-                    <div class="card-header" data-background-color="red" data-header-animation="true">
-                        <div class="ct-chart" id="websiteViewsChart"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-actions">
-                            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-info btn-simple" matTooltip="Refresh" [matTooltipPosition]="'below'">
-                                <i class="material-icons">refresh</i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-simple" matTooltip="Change Date" [matTooltipPosition]="'below'">
-                                <i class="material-icons">edit</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">Website Views</h4>
-                        <p class="category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-    </div>
-</div>
+          </div>
+          <!-- <div>
+              <div> -->
+         
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <!-- <div class="mat-paginator-page-size">
+            <div class="mat-paginator-page-size-label">{{_intl.itemsPerPageLabel}}</div>
+            <mat-form-field *ngIf="_displayedPageSizeOptions.length > 1" class="mat-paginator-page-size-select">
+              <mat-select [value]="pageSize" [aria-label]="_intl.itemsPerPageLabel" (change)="_changePageSize($event.value)">
+                <mat-option *ngFor="let pageSizeOption of _displayedPageSizeOptions" [value]="pageSizeOption">{{pageSizeOption}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="_displayedPageSizeOptions.length <= 1">{{pageSize}}</div>
+          </div>
+          <div class="mat-paginator-range-label">{{_intl.getRangeLabel(pageIndex, pageSize, length)}}</div>
+          <button mat-icon-button type="button" class="mat-paginator-navigation-previous"
+            (click)="previousPage()" [attr.aria-label]="_intl.previousPageLabel" [matTooltip]="_intl.previousPageLabel" [matTooltipPosition]="'above'"
+            [disabled]="!hasPreviousPage()">
+            <div class="mat-paginator-increment"></div>
+          </button>
+          <button mat-icon-button type="button" class="mat-paginator-navigation-next" (click)="nextPage()" [attr.aria-label]="_intl.nextPageLabel"
+            [matTooltip]="_intl.nextPageLabel" [matTooltipPosition]="'above'" [disabled]="!hasNextPage()">
+            <div class="mat-paginator-decrement"></div>
+          </button> -->

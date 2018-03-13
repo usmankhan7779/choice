@@ -14,6 +14,7 @@ import { HomeRoutes } from '../../home/home.routing';
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { PasswordValidation } from './password-validator.component';
 import { LoginService } from './login.service';
+import { DataService } from '../../data.service';
 declare var $: any;
 
 declare interface ValidatorFn {
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit {
   username;
   password;
 
-  constructor(public router: Router, private element: ElementRef, private http: Http, private route: ActivatedRoute,
+  constructor(private data: DataService,public router: Router, private element: ElementRef, private http: Http, private route: ActivatedRoute,
     private sg: SimpleGlobal, private _nav: Router, private _serv: LoginService, private formBuilder: FormBuilder) {
     this.nativeElement = element.nativeElement;
     this.sidebarVisible = false;
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
       'has-feedback': this.isFieldValid(form, field)
     };
   }
+
   onLogin() {
     // console.log(this.login);
     if (this.login.valid) {
@@ -82,8 +84,8 @@ export class LoginComponent implements OnInit {
                 'success'
               )
               // this.toastr.success('Successfully!', 'Logged in',{toastLife: 5000});
-              let url = 'dashboard';
-              this._nav.navigate([url]);
+              // let url = 'dashboard';
+              // this._nav.navigate([url]);
 
             },
             error => {
@@ -111,10 +113,39 @@ export class LoginComponent implements OnInit {
       //);
     }
     else {
-      this.validateAllFormFields(this.login);
+   //   this.validateAllFormFields(this.login);
     }
   }
+  onSubmit() {
+    this.router.navigate(['/dashboard/'+ this.username]);
+}
+  public products: any;
+  private allItems: any[];
+  fetchcompany() {
+    // this.route.params.subscribe(params => {
+   //   let zip =  this.sg['product_zipcode'];
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+   this.http.get('http://127.0.0.1:8000/choice/mydata/' + this.username +'/', { headers: headers })
+  //this.http.get(Config.api + 'monthly/' + this.zip_code + '',{ headers: headers })
+ // this.http.get(Config.api + 'filter/' + this.zip_code + '',{ headers: headers })
 
+ //  this.http.post(Config.api + 'filter/' + this.zip_code + '', {"month": this.months+" Month", "custom":"['2','8']"},{ headers: headers })
+      .subscribe(Res => {
+        this.sg['products'] = Res.json()['Results'];
+        this.data.changeProducts(this.sg['products']);
+        this.allItems = this.sg['products'];
+    //     for (let prod of this.sg['products']) {
+     console.log(Res)
+    //   //   //    console.log(prod["price_rate"])
+    //      prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+    //       prod["price_rate"] = prod["price_rate"].split('..', 3000);
+    //    }
+      this.router.navigate(['/dashboard/' + this.username]);
+    // this.router.navigate(['/dashboard/'])
+     });
+  
+    }
   foremail() {
     swal({
       title: 'Enter email address',

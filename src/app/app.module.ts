@@ -75,6 +75,7 @@ import { LoginService } from './pages/login/login.service';
 import { ResidentialService } from './residential/residential-dialog2/residential.service';
 import { ContactusComponent } from './contactus/contactus.component';
 import { PagerService } from './pager.service';
+import { CompanyService } from './company.service';
 
 
 @NgModule({
@@ -152,6 +153,7 @@ export class MaterialModule {}
   ],
   providers: [
     HomeService,
+    CompanyService,
     SimpleGlobal,
     DataService,
     SweetAlertService,

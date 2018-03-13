@@ -88,15 +88,15 @@ export const AppRoutes: Routes = [
     // {path: "contact", component: ContactusComponent},
     {path: "stepper", component: StepperOverviewExample},
     {
-        path: 'dashboard',
-        redirectTo: 'dashboard'
+        path: 'dashboard/',
+        redirectTo: 'dashboard/'
     },
     {
         path: '',
         component: AdminLayoutComponent,
         children: [
             {
-                path: '',
+                path:'dashboard/:username',
                 loadChildren: './dashboard/dashboard.module#DashboardModule'
             }, {
                 path: 'components',
