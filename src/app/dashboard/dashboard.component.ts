@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
 import { Config } from "../Config";
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from "@angular/router";
-import {  CompanyService } from "../company.service";
+import { CompanyService } from "../company.service";
 import { ErrorStateMatcher, MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material";
 import { NgForm, FormControl, Validators, FormGroupDirective } from "@angular/forms";
 import { SimpleGlobal } from 'ng2-simple-global';
@@ -12,6 +12,7 @@ import { PagerService } from '../pager.service';
 import { Pipe, PipeTransform } from "@angular/core";
 // import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Headers, Http, Response } from '@angular/http';
+import { HomeService } from "../home/home.service";
 
 // import {Config} from "../Config";
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
@@ -22,7 +23,6 @@ import { StarRatingModule, StarRatingConfig, StarRatingComponent } from 'angular
 //import { Http } from '@angular/http/src/http';
 import { PageEvent } from '@angular/material';
 // import { SSL_OP_NO_TICKET } from 'constants';
-
 
 
 
@@ -45,13 +45,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html'
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit, AfterViewInit{
     pageSizeOptions;
     public dataTable: DataTable;
-    private sub: Subscription;
+    private Sub: Subscription;
     private zip: any;
     prod_loaded = false;
     prods_loaded = false;
@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     closeResult: string;
 
     //    setPage;
-    constructor(private http: Http, private pagerService: PagerService, private companyService:CompanyService , private route: ActivatedRoute, private sg: SimpleGlobal, private obj:CompanyService, private router: Router, private dialog: MatDialog, private data: DataService) {
+    constructor(private homeService: HomeService, private http: Http, private pagerService: PagerService, private companyService: CompanyService, private route: ActivatedRoute, private sg: SimpleGlobal, private obj: HomeService, private router: Router, private dialog: MatDialog, private data: DataService) {
 
     }
 
@@ -72,66 +72,43 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     home: any = {};
     private id: any[];
     page: any[];
+    
     // paged items
     pagedItems: any[];
-username;
+  public productusername:any;
 
     ngOnInit() {
-      
-        // this.fetchitem();
-        // this.  fetchitem();
-        // const Results = {}
-        // onclick = function (rating) {
-        //     console.log(rating);
-        // }
-
         this.data.currentProducts.subscribe(products => this.sg['products'] = products)
         this.data.currentProducts
-
-        this.sub = this.route.params.subscribe(params => {
-            this.zip = +params['zipCode'];
-            this.obj.searchProduct(this.username).subscribe(response => {
-                // localStorage.setItem('products',response['Results']);
-    
-    
-                this.sg['products'] = response['Results'];
-                // console.log(this.sg['products']);
-                // for (let prod of this.sg['products']) {
-                //     //console.log(prod["plan_information"])
-                //     //console.log(prod["price_rate"])
-                //     prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-                //     prod["price_rate"] = prod["price_rate"].split('..', 3000);
-    
-                // }
-    
-                this.data.changeProducts(this.sg['products']);
-                this.prod_loaded = true;
-                this.prods_loaded = true;
-                //  this.allItems = this.sg['products'];
-                //console.clear()
-                // console.log(response['Total Result']);
-               // this.pager = this.pagerService.getPager(response['Total Result'], page, 10);
-    
-                //this.setPage(1);
-                // initialize to page 1
-                // console.log(this.sg['products']);
-    
-            }
-        );
-
-        });
-           
-          // this.data.changeProducts(this.sg['products']);
-          // this.prod_loaded = true;
-          // this.prods_loaded = true;
-
-    
-
-
-
-
-
+        this.Sub = this.route.params.subscribe(params => {
+            this. productusername = +params['username'] ;
+            alert(this. productusername);
+          })
+          this.setPage(1);
     }
+
+    // this.fetchitem();
+    // this.  fetchitem();
+    // const Results = {}
+    // onclick = function (rating) {
+    //     console.log(rating);
+    // }
+
+    // this.data.currentProducts.subscribe(products => this.sg['products'] = products)
+    // this.data.currentProducts
+
+    // this.sub = this.route.params.subscribe(params => {
+    //     this.zip = +params['zipCode'];
+    //     this.setPage(1);
+
+
+    // });
+
+
+
+
+
+
 
     // check(e) {
     //     this.fetchitem();
@@ -160,7 +137,7 @@ username;
     //         });
 
     // }
-   
+
     ngAfterViewInit() {
         $('#datatables').DataTable({
             'pagingType': 'full_numbers',
@@ -202,28 +179,28 @@ username;
             return;
         }
         const Results = {}
+        
+            this.companyService.searchProduct(this.productusername).subscribe(data => {
+             localStorage.setItem('products',data['Results']);
 
-        this.obj.searchProduct(this.username).subscribe(response => {
-            // localStorage.setItem('products',response['Results']);
 
+            this.sg['products'] = data['Results'];
+            console.log(this.sg['products']);
+            for (let prod of this.sg['products']) {
+                console.log(prod["plan_information"])
+                console.log(prod["price_rate"])
+                prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+                prod["price_rate"] = prod["price_rate"].split('..', 3000);
 
-            this.sg['products'] = response['Results'];
-            // console.log(this.sg['products']);
-            // for (let prod of this.sg['products']) {
-            //     //console.log(prod["plan_information"])
-            //     //console.log(prod["price_rate"])
-            //     prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            //     prod["price_rate"] = prod["price_rate"].split('..', 3000);
-
-            // }
+            }
 
             this.data.changeProducts(this.sg['products']);
             this.prod_loaded = true;
             this.prods_loaded = true;
-            //  this.allItems = this.sg['products'];
+             this.allItems = this.sg['products'];
             //console.clear()
             // console.log(response['Total Result']);
-           // this.pager = this.pagerService.getPager(response['Total Result'], page, 10);
+             this.pager = this.pagerService.getPager(data['Total Result'], page, 10);
 
             //this.setPage(1);
             // initialize to page 1
@@ -235,10 +212,10 @@ username;
         );
 
 
-        // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+         this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 
     }
-   
+
 
 
 }

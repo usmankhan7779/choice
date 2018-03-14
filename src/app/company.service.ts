@@ -10,7 +10,7 @@ username;
   constructor(private http: Http) { }
 
   searchProduct(username) {
-      return this.http.get('http://127.0.0.1:8000/choice/mydata/' + this.username +'/').map((response: Response) => response.json());
+      return this.http.get('http://127.0.0.1:8000/choice/mydata/' + username +'').map((response: Response) => response.json());
   }
 }
 

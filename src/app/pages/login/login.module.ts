@@ -11,6 +11,7 @@ import {MatDatepickerModule} from "@angular/material";
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlertService } from 'ng2-sweetalert2';
 import { LoginRoutes } from './login.routing';
+import { DataService } from '../../data.service';
 
 
 
@@ -27,7 +28,8 @@ import { LoginRoutes } from './login.routing';
     ],
     declarations: [LoginComponent],
     providers: [
-        SweetAlertService
+        SweetAlertService,
+        DataService
     ]
 })
 

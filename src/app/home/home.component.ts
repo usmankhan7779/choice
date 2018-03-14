@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
     signup;
     city;
     state;
-items;
+    items;
     private sub: Subscription;
 
     public products: any;

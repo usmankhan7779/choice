@@ -116,12 +116,17 @@ export class LoginComponent implements OnInit {
    //   this.validateAllFormFields(this.login);
     }
   }
-  onSubmit() {
-    this.router.navigate(['/dashboard/'+ this.username]);
-}
+//   onSubmit() {
+//     this.router.navigate(['/dashboard/'+ this.username]);
+// }
+prod_loaded = false;
+prods_loaded = false;
   public products: any;
   private allItems: any[];
-  fetchcompany() {
+  onSubmit(){
+    this.router.navigate(['/dashboard/'+this.username]);
+  }
+  fetchcompany(username) {
     // this.route.params.subscribe(params => {
    //   let zip =  this.sg['product_zipcode'];
     let headers = new Headers();
@@ -131,19 +136,17 @@ export class LoginComponent implements OnInit {
  // this.http.get(Config.api + 'filter/' + this.zip_code + '',{ headers: headers })
 
  //  this.http.post(Config.api + 'filter/' + this.zip_code + '', {"month": this.months+" Month", "custom":"['2','8']"},{ headers: headers })
-      .subscribe(Res => {
-        this.sg['products'] = Res.json()['Results'];
-        this.data.changeProducts(this.sg['products']);
-        this.allItems = this.sg['products'];
-    //     for (let prod of this.sg['products']) {
-     console.log(Res)
-    //   //   //    console.log(prod["price_rate"])
-    //      prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-    //       prod["price_rate"] = prod["price_rate"].split('..', 3000);
-    //    }
-      this.router.navigate(['/dashboard/' + this.username]);
-    // this.router.navigate(['/dashboard/'])
-     });
+ .subscribe(Res => {
+  this.sg['products'] = Res.json()['Results'];
+  this.data.changeProducts(this.sg['products']);
+  for (let prod of this.sg['products']) {
+    console.log(prod["plan_information"])
+    console.log(prod["price_rate"])
+    prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+    prod["price_rate"] = prod["price_rate"].split('..', 3000);
+ }
+});
+
   
     }
   foremail() {
@@ -193,6 +196,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.data.currentProducts.subscribe(products => this.sg['products'] = products)
+
+    this.username = this.sg['product_username'];
     this.login = this.formBuilder.group({
       // To add a validator, we must first convert the string value into an array. The first item in the array is the default value if any, then the next item in the array is the validator. Here we are adding a required validator meaning that the firstName attribute must have a value in it.
       username: ['', Validators.compose([Validators.required])],
