@@ -78,6 +78,7 @@ export class DashboardComponent implements OnInit, AfterViewInit{
   public productusername:any;
 
     ngOnInit() {
+      
         this.data.currentProducts.subscribe(products => this.sg['products'] = products)
         this.data.currentProducts
         this.Sub = this.route.params.subscribe(params => {
@@ -86,7 +87,7 @@ export class DashboardComponent implements OnInit, AfterViewInit{
           })
           this.setPage(1);
     }
-
+   
     // this.fetchitem();
     // this.  fetchitem();
     // const Results = {}

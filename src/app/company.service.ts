@@ -10,6 +10,8 @@ username;
   constructor(private http: Http) { }
 
   searchProduct(username) {
+    const headers = new Headers();
+headers.append('Content-Type', 'application/json');
       return this.http.get('http://127.0.0.1:8000/choice/mydata/' + username +'').map((response: Response) => response.json());
   }
 }

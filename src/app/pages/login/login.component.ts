@@ -123,6 +123,7 @@ prod_loaded = false;
 prods_loaded = false;
   public products: any;
   private allItems: any[];
+
   onSubmit(){
     this.router.navigate(['/dashboard/'+this.username]);
   }
@@ -139,12 +140,12 @@ prods_loaded = false;
  .subscribe(Res => {
   this.sg['products'] = Res.json()['Results'];
   this.data.changeProducts(this.sg['products']);
-  for (let prod of this.sg['products']) {
-    console.log(prod["plan_information"])
-    console.log(prod["price_rate"])
-    prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-    prod["price_rate"] = prod["price_rate"].split('..', 3000);
- }
+//   for (let prod of this.sg['products']) {
+//     console.log(prod["plan_information"])
+//     console.log(prod["price_rate"])
+//     prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+//     prod["price_rate"] = prod["price_rate"].split('..', 3000);
+// }
 });
 
   
