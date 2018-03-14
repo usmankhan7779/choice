@@ -17,12 +17,11 @@ import { HomeService } from "../home/home.service";
 // import {Config} from "../Config";
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 import { jsonpCallbackContext } from '@angular/common/http/src/module';
-import { StarRating } from 'angular-star-rating/star-rating';
-import { StarRatingModule, StarRatingConfig, StarRatingComponent } from 'angular-star-rating';
+
 // import { ValueUnwrapper } from '@angular/core/src/change_detection/change_detection_util';
 //import { Http } from '@angular/http/src/http';
 import { PageEvent } from '@angular/material';
-// import { SSL_OP_NO_TICKET } from 'constants';
+
 
 
 
