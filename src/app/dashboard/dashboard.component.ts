@@ -1,75 +1,191 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+
+import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
 import { TableData } from '../md/md-table/md-table.component';
 import { LegendItem, ChartType } from '../md/md-chart/md-chart.component';
+import { Config } from "../Config";
+import { Subscription } from 'rxjs/Subscription';
+import { CompanyService } from "../company.service";
+import { ErrorStateMatcher, MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material";
+import { NgForm, FormControl, Validators, FormGroupDirective } from "@angular/forms";
+import { Pipe, PipeTransform } from "@angular/core";
+// import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Headers, Http, Response } from '@angular/http';
+import { HomeService } from "../home/home.service";
+import { PagerService } from '../pager.service';
+import { ResponseContentType } from '@angular/http/src/enums';
+import { Console } from '@angular/core/src/console';
+// import {Config} from "../Config";
+import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
+import { jsonpCallbackContext } from '@angular/common/http/src/module';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SimpleGlobal } from 'ng2-simple-global';
+// import { ValueUnwrapper } from '@angular/core/src/change_detection/change_detection_util';
+//import { Http } from '@angular/http/src/http';
+import { PageEvent } from '@angular/material';
 
+import { DataService } from '../data.service';
+
+
+
+declare interface DataTable {
+    headerRow: string[];
+    footerRow: string[];
+    dataRows: string[][];
+}
 import * as Chartist from 'chartist';
 
 declare const $: any;
 
-@Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html'
-})
-export class DashboardComponent implements OnInit, AfterViewInit {
-  // constructor(private navbarTitleService: NavbarTitleService, private notificationService: NotificationService) { }
-  public tableData: TableData;
-  startAnimationForLineChart(chart: any) {
-      let seq: any, delays: any, durations: any;
-      seq = 0;
-      delays = 80;
-      durations = 500;
-      chart.on('draw', function(data: any) {
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+        const isSubmitted = form && form.submitted;
+        return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    }
 
-        if (data.type === 'line' || data.type === 'area') {
-          data.element.animate({
-            d: {
-              begin: 600,
-              dur: 700,
-              from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-              to: data.path.clone().stringify(),
-              easing: Chartist.Svg.Easing.easeOutQuint
+
+}
+
+@Component({
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html'
+
+})
+
+export class DashboardComponent implements OnInit, AfterViewInit {
+    constructor( private route: ActivatedRoute,
+        private router: Router,private http: Http, private pagerService: PagerService, private homeService: HomeService, private sg: SimpleGlobal, private obj: HomeService, private dialog: MatDialog, private data: DataService,private companyService: CompanyService) {
+
+    }
+
+    // array of all items to be paged
+    // pager object
+    pageSizeOptions;
+    private allItems: any[];
+    pager: any = {};
+    home: any = {};
+    private id: any[];
+    page: any[];
+    
+    // paged items
+    pagedItems: any[];
+    private sub: Subscription;
+    private zip: any;
+    prod_loaded = false;
+    prods_loaded = false;
+    localVar;
+    public products: any;
+    rating;
+    closeResult: string;
+    public tableData: TableData;
+    startAnimationForLineChart(chart: any) {
+        let seq: any, delays: any, durations: any;
+        seq = 0;
+        delays = 80;
+        durations = 500;
+        chart.on('draw', function(data: any) {
+  
+          if (data.type === 'line' || data.type === 'area') {
+            data.element.animate({
+              d: {
+                begin: 600,
+                dur: 700,
+                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                to: data.path.clone().stringify(),
+                easing: Chartist.Svg.Easing.easeOutQuint
+              }
+            });
+          } else if (data.type === 'point') {
+                seq++;
+                data.element.animate({
+                  opacity: {
+                    begin: seq * delays,
+                    dur: durations,
+                    from: 0,
+                    to: 1,
+                    easing: 'ease'
+                  }
+                });
             }
-          });
-        } else if (data.type === 'point') {
-              seq++;
+        });
+  
+        seq = 0;
+    }
+    startAnimationForBarChart(chart: any) {
+        let seq2: any, delays2: any, durations2: any;
+        seq2 = 0;
+        delays2 = 80;
+        durations2 = 500;
+        chart.on('draw', function(data: any) {
+          if (data.type === 'bar') {
+              seq2++;
               data.element.animate({
                 opacity: {
-                  begin: seq * delays,
-                  dur: durations,
+                  begin: seq2 * delays2,
+                  dur: durations2,
                   from: 0,
                   to: 1,
                   easing: 'ease'
                 }
               });
           }
-      });
+        });
+  
+        seq2 = 0;
+    }
+    setPage(username) {
+       // alert("username")
+      //  console.log("usernameeeeeeeeeeeee",username)
+      // if (page < 1 || page > this.pager.totalPages) {
+      //     return;
+      // }
+      const Results = {}
+  
+      this.companyService.searchProduct(username).subscribe(Response => {        // localStorage.setItem('products',response['Results']);
+      this.sg['products'] = Response['Results'];
+      // console.log(this.sg['products']);
+      // for (let prod of this.sg['products']) {
+      //     //console.log(prod["plan_information"])
+      //     //console.log(prod["price_rate"])
+      //     prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+      //     prod["price_rate"] = prod["price_rate"].split('..', 3000);
+      this.data.changeProducts(this.sg['products']);
+        this.prod_loaded = true;
+        this.prods_loaded = true;
+        //  this.allItems = this.sg['products'];
+        //console.clear()
+        // console.log(response['Total Result']);
+        // this.pager = this.pagerService.getPager(Response['Total Result'], page, 10);
+         //this.setPage(1);
+        // initialize to page 1
+        // console.log(this.sg['products']);
 
-      seq = 0;
-  }
-  startAnimationForBarChart(chart: any) {
-      let seq2: any, delays2: any, durations2: any;
-      seq2 = 0;
-      delays2 = 80;
-      durations2 = 500;
-      chart.on('draw', function(data: any) {
-        if (data.type === 'bar') {
-            seq2++;
-            data.element.animate({
-              opacity: {
-                begin: seq2 * delays2,
-                dur: durations2,
-                from: 0,
-                to: 1,
-                easing: 'ease'
-              }
-            });
-        }
-      });
+    } );
+     // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+     }
+ public username;
 
-      seq2 = 0;
-  }
+
+private Sub: Subscription;
   // constructor(private navbarTitleService: NavbarTitleService) { }
   public ngOnInit() {
+    this.route.params.subscribe ( params => {
+
+
+    //  console.log('paramsssssssssss',params['username'])
+        this.setPage(params['username']) 
+    });
+    //  alert("junaid");
+    // this.data.currentProducts.subscribe(products => this.sg['products'] = products)
+    // this.data.currentProducts
+    this.Sub = this.route.params.subscribe(params => {
+    this.username= +params['username'] ;
+   // alert(this.username);
+    });
+    this.setPage(1);
+  //  console.log()
+    
+  //    console.log("fatimaaaaaaaaaaaaaaaaaaaaaaaaaaa")
       this.tableData = {
           headerRow: ['ID', 'Name', 'Salary', 'Country', 'City'],
           dataRows: [
