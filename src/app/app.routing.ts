@@ -87,28 +87,18 @@ export const AppRoutes: Routes = [
     {path: "what-is-ChoiceGenie", component: AboutComponent},
     // {path: "contact", component: ContactusComponent},
     {path: "stepper", component: StepperOverviewExample},
-    // {
-    //     path: 'dashboard',
-    //     redirectTo: 'dashboard'
-    // },
-    
+    {
+        path: 'dashboard/',
+        redirectTo: 'dashboard/'
+    },
     {
         path: '',
         component: AdminLayoutComponent,
         children: [
             {
-                path: 'dashboard/:username',
+                path:'dashboard/:username',
                 loadChildren: './dashboard/dashboard.module#DashboardModule'
-            },
-            // {
-            //     path: 'dashboard',
-            //     loadChildren: './dashboard/dashboard.module#DashboardModule'
-            // },
-            // {
-            //     path: 'dashboard/:username',
-            //     loadChildren: './dashboard/dashboard.module#DashboardModule'
-            // },
-             {
+            }, {
                 path: 'components',
                 loadChildren: './components/components.module#ComponentsModule'
             }, {

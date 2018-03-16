@@ -38,7 +38,7 @@ declare interface User {
   templateUrl: './login.component.html'
 })
 
- export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit {
   public typeValidation: User;
   register: FormGroup;
   login: FormGroup;
@@ -47,7 +47,7 @@ declare interface User {
   private toggleButton: any;
   private sidebarVisible: boolean;
   private nativeElement: Node;
-  
+  username;
   password;
 
   constructor(private data: DataService,public router: Router, private element: ElementRef, private http: Http, private route: ActivatedRoute,
@@ -123,42 +123,15 @@ prod_loaded = false;
 prods_loaded = false;
   public products: any;
   private allItems: any[];
-  public results: any;
-    public name;
- public username:any[];
- 
 
   onSubmit(){
-    this.router.navigate(['/dashboard/'+ this.username]);
+    this.router.navigate(['/dashboard/'+this.username]);
   }
-<<<<<<< HEAD
   fetchcompany(username) {
     
-=======
-//   fetchcompany(username) {
-//     // this.route.params.subscribe(params => {
-//    //   let zip =  this.sg['product_zipcode'];
-//     let headers = new Headers();
-//     headers.append('Content-Type', 'application/json')
-//    this.http.get('http://127.0.0.1:8000/choice/mydata/' + this.username +'/', { headers: headers })
-//   //this.http.get(Config.api + 'monthly/' + this.zip_code + '',{ headers: headers })
-//  // this.http.get(Config.api + 'filter/' + this.zip_code + '',{ headers: headers })
-
-//  //  this.http.post(Config.api + 'filter/' + this.zip_code + '', {"month": this.months+" Month", "custom":"['2','8']"},{ headers: headers })
-//  .subscribe(Res => {
-//   this.sg['products'] = Res.json()['Results'];
-//   this.data.changeProducts(this.sg['products']);
-// //   for (let prod of this.sg['products']) {
-// //     console.log(prod["plan_information"])
-// //     console.log(prod["price_rate"])
-// //     prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-// //     prod["price_rate"] = prod["price_rate"].split('..', 3000);
-// // }
-// });
->>>>>>> c764f652eb2d7e1972a3017ec14b5e4fb6252fb0
 
   
-//     }
+    }
   foremail() {
     swal({
       title: 'Enter email address',
