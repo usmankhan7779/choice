@@ -6,6 +6,7 @@ import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http/src/http_module';
+import { HomeComponent } from './home.component';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { HttpModule } from '@angular/http/src/http_module';
         HttpModule,
         //SlickModule.forRoot()
     ],
-    declarations: []
+    declarations: [HomeComponent]
 })
 
 

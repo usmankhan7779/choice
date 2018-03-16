@@ -3,7 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map'
 
 
-import { Config } from "/Users/Brainplow/Documents/GitHub/genie/src/app/Config";
+import {Config} from '../../Config';
 import { ActivatedRoute, Router } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
 import { ResponseContentType } from '@angular/http/src/enums';

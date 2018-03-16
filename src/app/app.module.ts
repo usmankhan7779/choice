@@ -76,7 +76,8 @@ import { ResidentialService } from './residential/residential-dialog2/residentia
 import { ContactusComponent } from './contactus/contactus.component';
 import { PagerService } from './pager.service';
 import { CompanyService } from './company.service';
-
+import { DashboardService } from './dashboard/dashboard.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   exports: [
@@ -114,7 +115,7 @@ import { CompanyService } from './company.service';
     FormsModule,
     MatFormFieldModule
   ],
-  declarations: [RegisteredComponent],
+  declarations: [],
 
 })
 export class MaterialModule {}
@@ -159,6 +160,7 @@ export class MaterialModule {}
     SweetAlertService,
     LoginService,
     PagerService,
+    DashboardService,
 ResidentialService
   ],
   bootstrap: [AppComponent],

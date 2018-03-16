@@ -2,7 +2,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import { Component, Inject, OnInit, ElementRef } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Config } from "/Users/Brainplow/Documents/GitHub/genie/src/app/Config";
+import {Config} from '../../Config';
 
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
