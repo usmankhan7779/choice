@@ -68,7 +68,7 @@
                                         <div class="form-group label-floating" [ngClass]="displayFieldCss(login, 'username')">
                                             <label class="control-label">User Name</label>
                                             <!-- <mat-form-field> -->
-                                            <input matInput type="text" id="username" class="form-control" formControlName="username" [(ngModel)]="username">
+                                            <input matInput type="text" id="username" class="form-control" formControlName="username"[(ngModel)]="username" name="username">
                                             <!-- <mat-error *ngIf="login.controls.username.value == ''">
                                                     <strong>Username cannot be empty</strong>
                                                 </mat-error> -->
@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="footer text-center">
-                                    <button type="submit" class="btn btn-rose btn-wd btn-lg" (click)="onLogin(); onSubmit();fetchcompany()">LOGIN</button>
+                                    <button type="submit" class="btn btn-rose btn-wd btn-lg" (click)="onLogin();onSubmit()">LOGIN</button>
                                     <!-- <button> <a href="/dashboard">
                                         <i class="material-icons">dashboard</i> Dashboard
                                         </a></button> -->

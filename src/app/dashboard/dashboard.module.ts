@@ -4,14 +4,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
-import { HomeService } from "../home/home.service";
-import { DataService } from '../data.service';
-import { CompanyService } from "../company.service";
 import { PagerService } from '../pager.service';
 import { SimpleGlobal } from 'ng2-simple-global';
-
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
+import { CompanyService } from '../company.service';
 
 @NgModule({
     imports: [
@@ -24,9 +21,7 @@ import { DashboardRoutes } from './dashboard.routing';
     providers: [
         PagerService,
         SimpleGlobal,
-        HomeService,
-        CompanyService,
-        DataService
+        CompanyService
     ],
     declarations: [DashboardComponent]
 })

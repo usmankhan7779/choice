@@ -5,14 +5,15 @@ import {Config} from "./Config";
 @Injectable()
 export class CompanyService {
 
-username;
-  months:any[];
+username:any[];
+  
   constructor(private http: Http) { }
 
   searchProduct(username) {
-    const headers = new Headers();
+  
+    let headers = new Headers();
 headers.append('Content-Type', 'application/json');
-      return this.http.get('http://127.0.0.1:8000/choice/mydata/' + username +'').map((response: Response) => response.json());
+      return this.http.get(Config.api +'mydata/'+ username +'' ,{ headers: headers }).map((response: Response) => response.json());
   }
 }
 
