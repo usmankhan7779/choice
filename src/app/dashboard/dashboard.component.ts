@@ -182,7 +182,7 @@ private Sub: Subscription;
     this.username= +params['username'] ;
    // alert(this.username);
     });
-    this.setPage(1);
+   // this.setPage();
   //  console.log()
     
   //    console.log("fatimaaaaaaaaaaaaaaaaaaaaaaaaaaa")

@@ -21,7 +21,7 @@ login(username: string, password: string) {
   headers.append('Content-Type', 'application/json');
 //return this.http.get(Config.api+'data_against_zipcode/'+id+'?page='+page).map((response: Response) => response.json());
   // return this._http5.post(Config.api+'user-token-auth/',
-  return this._http5.put(Config.api+'login/',
+  return this._http5.post(Config.api+'signin/',
     JSON.stringify({username: username, password: password }), {headers: headers})
     .map((response: Response) => {
       let user =  { username: username, token: response.json().token};
@@ -35,7 +35,7 @@ login(username: string, password: string) {
 
 
 login_authenticate(username:string,password:string){
-    return this._http5.put( Config.api+'login/',{
+    return this._http5.post( Config.api+'signin/',{
         'username':username,
         'password':password
     }).map((res: Response) => res.json() ) 

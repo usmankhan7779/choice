@@ -83,7 +83,7 @@ declare interface User {
                 '',
                 'success'
               )
-              // this.toastr.success('Successfully!', 'Logged in',{toastLife: 5000});
+           //   this.toastr.success('Successfully!', 'Logged in',{toastLife: 5000});
               // let url = 'dashboard';
               // this._nav.navigate([url]);
 
@@ -113,7 +113,7 @@ declare interface User {
       //);
     }
     else {
-   //   this.validateAllFormFields(this.login);
+    this.validateAllFormFields(this.login);
     }
   }
 //   onSubmit() {
