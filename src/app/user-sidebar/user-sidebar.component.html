@@ -31,9 +31,9 @@
       <li>
         <h5>Estimated Usage&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" title="If you choose a plan with a long contract period, you may be subject to an early cancellation fee if you decide to change plans prior to the expiration of the contract period.  Plans that are shorter give you more flexibility to switch, but they only lock in your set rate for a short amount of time.Month-to-Month plans are usually Variable or Indexed offers."></i></h5>
         <mat-form-field >
-        <mat-select  placeholder="KWh" (ngModelChange)="check($event)" [(ngModel)]="eUsage"  >
+        <mat-select  (ngModelChange)="check($event)" [(ngModel)]="eUsage"  >
           <mat-option value="500" style="font-size: 20px">500  kWh</mat-option>
-          <mat-option value="1000" style="font-size: 20px">1000 kWh</mat-option>
+          <mat-option selected="1000" value="1000" style="font-size: 20px">1000 kWh</mat-option>
           <mat-option value="2000" style="font-size: 20px">2000 kWh</mat-option>
         </mat-select>
         </mat-form-field>
@@ -94,7 +94,7 @@
           &nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" title="If you choose a plan with a long contract period, you may be subject to an early cancellation fee if you decide to change plans prior to the expiration of the contract period.Plans that are shorter give you more flexibility to switch, but they only lock in your set rate for a short amount of time.Month-to-Month plans are usually Variable or Indexed offers.."></i>
         </h5>
         <!-- <mat-form-field> -->
-        <mat-select placeholder="In Months" (ngModelChange)="check($event)" [(ngModel)]="months" >
+        <mat-select placeholder="In Months" (ngModelChange)="check($event)" [(ngModel)]="months" [multiple]="true">
             <mat-option value="3"style="font-size: 20px">3 Months</mat-option>
             <mat-option value="6"style="font-size: 20px">6 Months</mat-option>
             <mat-option value="12"style="font-size: 20px">12 Months</mat-option>

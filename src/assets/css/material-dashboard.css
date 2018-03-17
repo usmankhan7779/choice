@@ -7773,7 +7773,7 @@
  
  .popover, .tooltip-inner, .mat-tooltip {
    color: #555555 !important;
-   line-height: 1.5em;
+   line-height: 1em;
    background: #FFFFFF;
    border: none;
    border-radius: 3px !important;

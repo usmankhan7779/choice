@@ -50,7 +50,7 @@ export class Signup1Component implements OnInit {
     this.states();
   // this.city();
     this.signupForm = this.fb.group({
-      'fname': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
+      'fname': ['', Validators.compose([Validators.required])],
      'lname': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
      'email': ['', Validators.compose([Validators.required, Validators.pattern(this.email)])],
        'username': ['', Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z_\- ]+$/)])],
