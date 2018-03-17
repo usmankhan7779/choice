@@ -139,6 +139,9 @@ export class MaterialModule {}
     Ng2CarouselamosModule,
     FooterModule,
     CarouselModule.forRoot(),
+    BrowserModule,
+   //IonicModule.forRoot(AppRoutes),
+  //  HttpClientModule
   ],
   declarations: [
     AppComponent,

@@ -7,6 +7,7 @@ import { MaterialModule } from '../app.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http/src/http_module';
 import { HomeComponent } from './home.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -17,6 +18,9 @@ import { HomeComponent } from './home.component';
         MdModule,
         MaterialModule,
         HttpModule,
+        BrowserModule,
+//    IonicModule.forRoot(MyApp),
+   HttpClientModule
         //SlickModule.forRoot()
     ],
     declarations: [HomeComponent]
