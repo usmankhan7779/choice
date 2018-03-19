@@ -50,15 +50,15 @@ export class Signup1Component implements OnInit {
     this.states();
   // this.city();
     this.signupForm = this.fb.group({
-      'fname': ['', Validators.compose([Validators.required])],
-     'lname': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
+      'zipcode': ['', Validators.compose([Validators.required,, Validators.pattern(this.digitsOnly)])],
+     'utilityarea': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
      'email': ['', Validators.compose([Validators.required, Validators.pattern(this.email)])],
        'username': ['', Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z_\- ]+$/)])],
        'phone':['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
-       'dob': ['', Validators.compose([Validators.required])],
+      // 'dob': ['', Validators.compose([Validators.required])],
        'state': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
        'country': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
-       'city': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
+      // 'city': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
      'confirmpassword': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
     
@@ -187,7 +187,7 @@ cities() {
 //       });
 
 // }
-  signupuserdata() {
+  signupuserdata(f) {
     //alert('hello');
     console.log("CHOICE GENIE",this.model);
 
@@ -196,7 +196,7 @@ cities() {
 
         headers.append('Content-Type', 'application/json');
         // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-        this.http.post(Config.api + 'signup1/', this.model, { headers: headers })
+        this.http.post(Config.api + 'companysignin/', this.model, { headers: headers })
 
 
         //   // this.http.post(Config.api + 'signup/'+ this.zip_code +'', {"premiseid": this.premiseID +'', {headers: headers})
@@ -208,7 +208,7 @@ cities() {
         //     //    this.state = Res[0].state;
         //     //this.sg['products'] = Res.json()['Results'];
         //     //this.data.changeProducts(this.sg['products']);
-
+        f.resetForm();
           });
         //}
 
