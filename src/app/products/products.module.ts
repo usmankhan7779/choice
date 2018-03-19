@@ -6,7 +6,7 @@ import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
 import { PagerService } from '../pager.service';
 import { HttpClientModule } from '@angular/common/http'
-import {ProductsComponent} from "./products.component";
+import {ProductsComponent, plandetailDialog} from "./products.component";
 import {ExtendedTableComponent} from "../tables/extendedtable/extendedtable.component";
 import {RegularTableComponent} from "../tables/regulartable/regulartable.component";
 import {ProductsRoutes} from './products.routing';
@@ -31,7 +31,7 @@ import { SimpleGlobal } from 'ng2-simple-global';
         ExtendedTableComponent,
         RegularTableComponent,
         PremiseDialog,
-       // plandetailDialog,
+        plandetailDialog,
         //PrettyPlanDetails
     ],
     providers: [

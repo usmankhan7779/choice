@@ -20,7 +20,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule
   ],
   declarations: [
-    LoginComponent,
+    //LoginComponent,
     RegisterComponent,
     PricingComponent,
     LockComponent

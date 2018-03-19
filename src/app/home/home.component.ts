@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
 
     public products: any;
 
-    constructor(private obj: HomeService, private router: Router, private route: ActivatedRoute, private sg: SimpleGlobal, private data: DataService, private Http: Http) {
+    constructor(private obj: HomeService, private router: Router, private route: ActivatedRoute, public sg: SimpleGlobal, private data: DataService, private Http: Http) {
       
     }
 

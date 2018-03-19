@@ -63,13 +63,13 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
 import { AboutComponent } from './about/about.component';
-import {StepperOverviewExample} from "./signup/stepper-overview-example";
+// import {StepperOverviewExample} from "./signup/stepper-overview-example";
 import {HomeService} from './home/home.service';
 import {BrowserModule, BrowserTransferStateModule} from "@angular/platform-browser";
 import { DataService } from './data.service';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
-import { RegisteredComponent } from './registered/registered.component';
+// import { RegisteredComponent } from './registered/registered.component';
 import {LoginComponent } from './../app/pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
 import { ResidentialService } from './residential/residential-dialog2/residential.service';
@@ -78,6 +78,7 @@ import { PagerService } from './pager.service';
 import { CompanyService } from './company.service';
 import { DashboardService } from './dashboard/dashboard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StepperOverviewExample } from './signup/stepper-overview-example';
 
 @NgModule({
   exports: [
@@ -150,6 +151,7 @@ export class MaterialModule {}
     NormalLayoutComponent,
     AuthLayoutComponent,
     HomeComponent,
+    // HomeComponent,
     HeaderComponent,
     UserSidebarComponent,
     AboutComponent,
