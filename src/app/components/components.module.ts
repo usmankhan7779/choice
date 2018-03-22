@@ -9,7 +9,7 @@ import { GridSystemComponent } from './grid/grid.component';
 import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { PanelsComponent } from './panels/panels.component';
-import { SweetAlertComponent } from './sweetalert/sweetalert.component';
+// import { SweetAlertComponent } from './sweetalert/sweetalert.component';
 import { TypographyComponent } from './typography/typography.component';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { TypographyComponent } from './typography/typography.component';
       IconsComponent,
       NotificationsComponent,
       PanelsComponent,
-      SweetAlertComponent,
+      // SweetAlertComponent,
       TypographyComponent
   ]
 })

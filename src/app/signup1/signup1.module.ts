@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MdModule } from '../md/md.module';
+// import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
 
 import {Signup1Component} from "./signup1.component";
@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
     imports: [
         CommonModule,
         RouterModule.forChild(Signup1Routes),
-        MdModule,
+        // MdModule,
         MaterialModule,
         FormsModule,
         ReactiveFormsModule,

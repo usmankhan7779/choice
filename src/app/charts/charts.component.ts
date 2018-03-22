@@ -1,68 +1,66 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as Chartist from 'chartist';
-
 @Component({
     selector: 'app-charts-cmp',
     templateUrl: './charts.component.html'
 })
 
 export class ChartsComponent implements OnInit {
-    startAnimationForLineChart(chart: any) {
-        let seq: number, delays: number, durations: number;
-        seq = 0;
-        delays = 80;
-        durations = 500;
-        chart.on('draw', function(data: any) {
+    // startAnimationForLineChart(chart: any) {
+    //     let seq: number, delays: number, durations: number;
+    //     seq = 0;
+    //     delays = 80;
+    //     durations = 500;
+    //     chart.on('draw', function(data: any) {
 
-          if (data.type === 'line' || data.type === 'area') {
-            data.element.animate({
-              d: {
-                begin: 600,
-                dur: 700,
-                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-                to: data.path.clone().stringify(),
-                easing: Chartist.Svg.Easing.easeOutQuint
-              }
-            });
-          } else if (data.type === 'point') {
-                seq++;
-                data.element.animate({
-                  opacity: {
-                    begin: seq * delays,
-                    dur: durations,
-                    from: 0,
-                    to: 1,
-                    easing: 'ease'
-                  }
-                });
-            }
-        });
+    //       if (data.type === 'line' || data.type === 'area') {
+    //         data.element.animate({
+    //           d: {
+    //             begin: 600,
+    //             dur: 700,
+    //             from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+    //             to: data.path.clone().stringify(),
+    //             easing: Chartist.Svg.Easing.easeOutQuint
+    //           }
+    //         });
+    //       } else if (data.type === 'point') {
+    //             seq++;
+    //             data.element.animate({
+    //               opacity: {
+    //                 begin: seq * delays,
+    //                 dur: durations,
+    //                 from: 0,
+    //                 to: 1,
+    //                 easing: 'ease'
+    //               }
+    //             });
+    //         }
+    //     });
 
-        seq = 0;
-    }
-    startAnimationForBarChart(chart: any) {
-        let seq2: number, delays2: number, durations2: number;
-        seq2 = 0;
-        delays2 = 80;
-        durations2 = 500;
-        chart.on('draw', function(data: any) {
-          if (data.type === 'bar') {
-              seq2++;
-              data.element.animate({
-                opacity: {
-                  begin: seq2 * delays2,
-                  dur: durations2,
-                  from: 0,
-                  to: 1,
-                  easing: 'ease'
-                }
-              });
-          }
-        });
+    //     seq = 0;
+    // }
+    // startAnimationForBarChart(chart: any) {
+    //     let seq2: number, delays2: number, durations2: number;
+    //     seq2 = 0;
+    //     delays2 = 80;
+    //     durations2 = 500;
+    //     chart.on('draw', function(data: any) {
+    //       if (data.type === 'bar') {
+    //           seq2++;
+    //           data.element.animate({
+    //             opacity: {
+    //               begin: seq2 * delays2,
+    //               dur: durations2,
+    //               from: 0,
+    //               to: 1,
+    //               easing: 'ease'
+    //             }
+    //           });
+    //       }
+    //     });
 
-        seq2 = 0;
-    }
+    //     seq2 = 0;
+    // }
     ngOnInit() {
         /* ----------==========    Rounded Line Chart initialization    ==========---------- */
 
@@ -73,23 +71,23 @@ export class ChartsComponent implements OnInit {
             ]
         };
 
-        const optionsRoundedLineChart: any = {
-            lineSmooth: Chartist.Interpolation.cardinal({
-                tension: 10
-            }),
-            axisX: {
-                showGrid: false,
-            },
-            low: 0,
-            high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-            chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
-            showPoint: false,
-            showLine: true
-        };
+        // const optionsRoundedLineChart: any = {
+        //     lineSmooth: Chartist.Interpolation.cardinal({
+        //         tension: 10
+        //     }),
+        //     axisX: {
+        //         showGrid: false,
+        //     },
+        //     low: 0,
+        //     high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        //     chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
+        //     showPoint: false,
+        //     showLine: true
+        // };
 
-        const RoundedLineChart = new Chartist.Line('#roundedLineChart', dataRoundedLineChart, optionsRoundedLineChart);
+        // const RoundedLineChart = new Chartist.Line('#roundedLineChart', dataRoundedLineChart, optionsRoundedLineChart);
 
-        this.startAnimationForLineChart(RoundedLineChart);
+        // this.startAnimationForLineChart(RoundedLineChart);
 
 
         /*  **************** Straight Lines Chart - single line with points ******************** */
@@ -101,24 +99,24 @@ export class ChartsComponent implements OnInit {
           ]
         };
 
-        const optionsStraightLinesChart: any = {
-            lineSmooth: Chartist.Interpolation.cardinal({
-                tension: 0
-            }),
-            low: 0,
-            high: 50, // creative tim: we recommend you to set the high sa the biggest value +
-            // something for a better look
-            chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
-            classNames: {
-                point: 'ct-point ct-white',
-                line: 'ct-line ct-white'
-            }
-        };
+        // const optionsStraightLinesChart: any = {
+        //     lineSmooth: Chartist.Interpolation.cardinal({
+        //         tension: 0
+        //     }),
+        //     low: 0,
+        //     high: 50, // creative tim: we recommend you to set the high sa the biggest value +
+        //     // something for a better look
+        //     chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
+        //     classNames: {
+        //         point: 'ct-point ct-white',
+        //         line: 'ct-line ct-white'
+        //     }
+        // };
 
-        const straightLinesChart = new Chartist.Line('#straightLinesChart', dataStraightLinesChart,
-         optionsStraightLinesChart);
+        // const straightLinesChart = new Chartist.Line('#straightLinesChart', dataStraightLinesChart,
+        //  optionsStraightLinesChart);
 
-        this.startAnimationForLineChart(straightLinesChart);
+        // this.startAnimationForLineChart(straightLinesChart);
 
 
         /*  **************** Coloured Rounded Line Chart - Line Chart ******************** */
@@ -131,27 +129,27 @@ export class ChartsComponent implements OnInit {
           ]
         };
 
-        const optionsColouredRoundedLineChart: any = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 10
-          }),
-          axisY: {
-              showGrid: true,
-              offset: 40
-          },
-          axisX: {
-              showGrid: false,
-          },
-          low: 0,
-          high: 1000,
-          showPoint: true,
-          height: '300px'
-        };
+        // const optionsColouredRoundedLineChart: any = {
+        //   lineSmooth: Chartist.Interpolation.cardinal({
+        //       tension: 10
+        //   }),
+        //   axisY: {
+        //       showGrid: true,
+        //       offset: 40
+        //   },
+        //   axisX: {
+        //       showGrid: false,
+        //   },
+        //   low: 0,
+        //   high: 1000,
+        //   showPoint: true,
+        //   height: '300px'
+        // };
 
-        const colouredRoundedLineChart = new Chartist.Line('#colouredRoundedLineChart', dataColouredRoundedLineChart,
-         optionsColouredRoundedLineChart);
+        // const colouredRoundedLineChart = new Chartist.Line('#colouredRoundedLineChart', dataColouredRoundedLineChart,
+        //  optionsColouredRoundedLineChart);
 
-        this.startAnimationForLineChart(colouredRoundedLineChart);
+        // this.startAnimationForLineChart(colouredRoundedLineChart);
 
 
         /*  **************** Coloured Rounded Line Chart - Line Chart ******************** */
@@ -166,28 +164,28 @@ export class ChartsComponent implements OnInit {
           ]
         };
 
-        const optionsColouredBarsChart: any = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 10
-          }),
-          axisY: {
-              showGrid: true,
-              offset: 40
-          },
-          axisX: {
-              showGrid: false,
-          },
-          low: 0,
-          high: 1000,
-          showPoint: true,
-          height: '300px'
-        };
+        // const optionsColouredBarsChart: any = {
+        //   lineSmooth: Chartist.Interpolation.cardinal({
+        //       tension: 10
+        //   }),
+        //   axisY: {
+        //       showGrid: true,
+        //       offset: 40
+        //   },
+        //   axisX: {
+        //       showGrid: false,
+        //   },
+        //   low: 0,
+        //   high: 1000,
+        //   showPoint: true,
+        //   height: '300px'
+        // };
 
 
-        const colouredBarsChart = new Chartist.Line('#colouredBarsChart', dataColouredBarsChart,
-         optionsColouredBarsChart);
+        // const colouredBarsChart = new Chartist.Line('#colouredBarsChart', dataColouredBarsChart,
+        //  optionsColouredBarsChart);
 
-        this.startAnimationForLineChart(colouredBarsChart);
+        // this.startAnimationForLineChart(colouredBarsChart);
 
 
 
@@ -202,7 +200,7 @@ export class ChartsComponent implements OnInit {
             height: '230px'
         };
 
-        new Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
+        // new Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
 
         /*  **************** Simple Bar Chart - barchart ******************** */
 
@@ -231,11 +229,11 @@ export class ChartsComponent implements OnInit {
           }]
         ];
 
-        const simpleBarChart = new Chartist.Bar('#simpleBarChart', dataSimpleBarChart, optionsSimpleBarChart,
-         responsiveOptionsSimpleBarChart);
+        // const simpleBarChart = new Chartist.Bar('#simpleBarChart', dataSimpleBarChart, optionsSimpleBarChart,
+        //  responsiveOptionsSimpleBarChart);
 
-        // start animation for the Emails Subscription Chart
-        this.startAnimationForBarChart(simpleBarChart);
+        // // start animation for the Emails Subscription Chart
+        // this.startAnimationForBarChart(simpleBarChart);
 
 
         const dataMultipleBarsChart = {
@@ -265,10 +263,10 @@ export class ChartsComponent implements OnInit {
           }]
         ];
 
-        const multipleBarsChart = new Chartist.Bar('#multipleBarsChart', dataMultipleBarsChart,
-         optionsMultipleBarsChart, responsiveOptionsMultipleBarsChart);
+        // const multipleBarsChart = new Chartist.Bar('#multipleBarsChart', dataMultipleBarsChart,
+        //  optionsMultipleBarsChart, responsiveOptionsMultipleBarsChart);
 
-        // start animation for the Emails Subscription Chart
-        this.startAnimationForBarChart(multipleBarsChart);
+        // // start animation for the Emails Subscription Chart
+        // this.startAnimationForBarChart(multipleBarsChart);
     }
 }

@@ -114,16 +114,10 @@ export const AppRoutes: Routes = [
             }, {
                 path: 'forms',
                 loadChildren: './forms/forms.module#Forms'
-            }, {
-                path: 'tables',
-                loadChildren: './tables/tables.module#TablesModule'
-            }, {
+            },  {
                 path: 'maps',
                 loadChildren: './maps/maps.module#MapsModule'
-            }, {
-                path: 'widgets',
-                loadChildren: './widgets/widgets.module#WidgetsModule'
-            }, {
+            },  {
                 path: 'charts',
                 loadChildren: './charts/charts.module#ChartsModule'
             }, {

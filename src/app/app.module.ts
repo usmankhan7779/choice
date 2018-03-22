@@ -7,7 +7,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { SweetAlertService } from 'ng2-sweetalert2';
+// import { SweetAlertService } from 'ng2-sweetalert2';
 
 
 import {
@@ -67,8 +67,7 @@ import { AboutComponent } from './about/about.component';
 import {HomeService} from './home/home.service';
 import {BrowserModule, BrowserTransferStateModule} from "@angular/platform-browser";
 import { DataService } from './data.service';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+// import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 // import { RegisteredComponent } from './registered/registered.component';
 import {LoginComponent } from './../app/pages/login/login.component';
 import { LoginService } from './pages/login/login.service';
@@ -137,9 +136,9 @@ export class MaterialModule {}
     SidebarModule,
     NavbarModule,
     FooterModule,
-    Ng2CarouselamosModule,
+    // Ng2CarouselamosModule,
     FooterModule,
-    CarouselModule.forRoot(),
+    // CarouselModule.forRoot(),
     BrowserModule,
    //IonicModule.forRoot(AppRoutes),
   //  HttpClientModule
@@ -162,7 +161,7 @@ export class MaterialModule {}
     CompanyService,
     SimpleGlobal,
     DataService,
-    SweetAlertService,
+    // SweetAlertService,
     LoginService,
     PagerService,
     DashboardService,

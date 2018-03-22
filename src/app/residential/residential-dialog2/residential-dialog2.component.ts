@@ -8,7 +8,7 @@ import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
 import { ResponseContentType } from '@angular/http/src/enums';
 import { Console } from '@angular/core/src/console';
-import swal from 'sweetalert2';
+// import swal from 'sweetalert2';
 import { TOUCHEND_HIDE_DELAY } from '@angular/material';
 // import { HomeRoutes } from '../../home/home.routing';
 
@@ -81,11 +81,11 @@ export class ResidentialDialog2Component{
           this._serv.login(this.login.value.username, this.login.value.password).subscribe(
             data => {
               // console.log(data);
-              swal(
-                'Successfully! Logged in',
-                '',
-                'success'
-              )
+              // swal(
+              //   'Successfully! Logged in',
+              //   '',
+              //   'success'
+              // )
               // this.toastr.success('Successfully!', 'Logged in',{toastLife: 5000});
               let url = 'home';
               this._nav.navigate([url]);
@@ -94,11 +94,11 @@ export class ResidentialDialog2Component{
             error => {
               // console.log(error);
               // this.toastr.error(error, null, {toastLife: 5000});
-              swal(
-                'Invalid',
-                'Username OR Password',
-                'error'
-              )
+              // swal(
+              //   'Invalid',
+              //   'Username OR Password',
+              //   'error'
+              // )
             
             });
 
@@ -121,34 +121,35 @@ export class ResidentialDialog2Component{
   }
 
   foremail() {
-    swal({
-      title: 'Enter email address',
-      input: 'email',
-      inputPlaceholder: 'Enter your email address'
-    }).then((email) => {
-      this.forgetPassword(email)
+    // swal({
+    //   title: 'Enter email address',
+    //   input: 'email',
+    //   inputPlaceholder: 'Enter your email address'
+    // })
+    // .then((email) => {
+    //   this.forgetPassword(email)
 
-    })
+    // })
   }
 
   forgetPassword(pass) {
     // console.log("pass",pass.value['email']);
     this._serv.forget_password(pass).subscribe(
       data => {
-        swal({
-          type: 'success',
-          html: 'Password Reset instructions have been sent to your email. '
-        })
+        // swal({
+        //   type: 'success',
+        //   html: 'Password Reset instructions have been sent to your email. '
+        // })
         // console.log(data);
         // this.toastr.info(data.msg, null, {toastLife: 5000});
       },
       error => {
         // console.log(error);
-        swal(
-          'Invalid email ',
-          'Or user does not exist!',
-          'error'
-        )
+        // swal(
+        //   'Invalid email ',
+        //   'Or user does not exist!',
+        //   'error'
+        // )
       }
     )
 

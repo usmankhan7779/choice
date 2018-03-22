@@ -14,8 +14,6 @@ import { ActivatedRoute, RouterModule } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
 import { DataService } from '../data.service';
 // import { ICarouselConfig, AnimationConfig } from 'angular4-carousel';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { CarouselConfig } from 'ngx-bootstrap/carousel';
 //import { setTimeout } from 'timers';
 // import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 // import { Http } from '@angular/http/src/http';
@@ -33,7 +31,7 @@ export class errorMatcher implements ErrorStateMatcher {
     selector: 'app-home',
     templateUrl: './home.component.html',
     providers: [
-        { provide: CarouselConfig, useValue: { interval: 3500, noPause: true, showIndicators: true } }
+        // { provide: CarouselConfig, useValue: { interval: 3500, noPause: true, showIndicators: true } }
       ]
     
     
@@ -92,6 +90,29 @@ export class HomeComponent implements OnInit {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
         };
+
+        // $('.slick-testimonal').slick({
+        //     slidesToShow: 2,
+        // });
+
+    $('.slick-testimonal').slick({
+        slidesToShow: 1,
+        autoplay: true,
+        autoplaySpeed: 7000,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        fade: true,
+        prevArrow: '<button class="slick-arrow leftArrow btn-slider btn-slider-left"><i class="fa fa-angle-left"></i></button>',
+        nextArrow: '<button class="slick-arrow rightArrow btn-slider btn-slider-right"><i class="fa fa-angle-right"></i></button>'
+      });
+      $('.mainSlider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        $('.slide-heading').animateCss('fadeInDown');
+        $('.para-1').animateCss('fadeInUp');
+  
+      });
+  
+  
+  
 
         //alert("i am here")
 

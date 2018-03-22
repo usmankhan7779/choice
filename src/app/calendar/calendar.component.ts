@@ -1,7 +1,7 @@
 // IMPORTANT: this is a plugin which requires jQuery for initialisation and data manipulation
 
 import { Component, OnInit } from '@angular/core';
-declare const swal: any;
+// declare const swal: any;
 declare const $: any;
 
 @Component({
@@ -47,36 +47,36 @@ export class CalendarComponent implements OnInit {
                 }
             },
 
-            select: function(start: any, end: any) {
+            // select: function(start: any, end: any) {
 
-                // on select we show the Sweet Alert modal with an input
-                swal({
-                    title: 'Create an Event',
-                    html: '<div class="form-group">' +
-                            '<input class="form-control" placeholder="Event Title" id="input-field">' +
-                        '</div>',
-                    showCancelButton: true,
-                    confirmButtonClass: 'btn btn-success',
-                    cancelButtonClass: 'btn btn-danger',
-                    buttonsStyling: false
-                }).then(function(result: any) {
+            //     // on select we show the Sweet Alert modal with an input
+            //     swal({
+            //         title: 'Create an Event',
+            //         html: '<div class="form-group">' +
+            //                 '<input class="form-control" placeholder="Event Title" id="input-field">' +
+            //             '</div>',
+            //         showCancelButton: true,
+            //         confirmButtonClass: 'btn btn-success',
+            //         cancelButtonClass: 'btn btn-danger',
+            //         buttonsStyling: false
+            //     }).then(function(result: any) {
 
-                    let eventData;
-                    const event_title = $('#input-field').val();
+            //         let eventData;
+            //         const event_title = $('#input-field').val();
 
-                    if (event_title) {
-                        eventData = {
-                            title: event_title,
-                            start: start,
-                            end: end
-                        };
-                        $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
-                    }
+            //         if (event_title) {
+            //             eventData = {
+            //                 title: event_title,
+            //                 start: start,
+            //                 end: end
+            //             };
+            //             $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
+            //         }
 
-                    $calendar.fullCalendar('unselect');
+            //         $calendar.fullCalendar('unselect');
 
-                });
-            },
+            //     });
+            // },
             editable: true,
             eventLimit: true, // allow "more" link when too many events
 

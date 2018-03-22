@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdModule } from '../../md/md.module';
+// import { MdModule } from '../../md/md.module';
 import { MaterialModule } from '../../app.module';
 
 
@@ -14,7 +14,7 @@ import {SearchCustomer} from './search-customer.routing';
         CommonModule,
         RouterModule.forChild(SearchCustomer),
         FormsModule,
-        MdModule,
+        // MdModule,
         MaterialModule
     ],
     declarations: [

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MdModule } from '../md/md.module';
+// import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from "@angular/material";
@@ -13,7 +13,7 @@ import { contactRoutes } from './contactus.routing';
     imports: [
         CommonModule,
         RouterModule.forChild(contactRoutes),
-        MdModule,
+        // MdModule,
         MaterialModule,
         FormsModule,
         ReactiveFormsModule,

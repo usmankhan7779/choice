@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdModule } from '../md/md.module';
+// import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ResidentialRoutes} from "./residential.routing";
@@ -16,7 +16,7 @@ import { ResidentialDialog2Component } from './residential-dialog2/residential-d
         RouterModule,
         FormsModule,
         RouterModule.forChild(ResidentialRoutes),
-        MdModule,
+        // MdModule,
         MaterialModule,
     ],
     declarations: [DialogOverviewExample,DialogOverviewExampleDialog, ResidentialDialog2Component],

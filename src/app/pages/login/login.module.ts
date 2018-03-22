@@ -9,7 +9,7 @@ import {LoginComponent} from "./login.component";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from "@angular/material";
 import { HttpClientModule } from '@angular/common/http';
-import { SweetAlertService } from 'ng2-sweetalert2';
+// import { SweetAlertService } from 'ng2-sweetalert2';
 import { LoginRoutes } from './login.routing';
 import { DataService } from '../../data.service';
 
@@ -28,7 +28,7 @@ import { DataService } from '../../data.service';
     ],
     declarations: [LoginComponent],
     providers: [
-        SweetAlertService,
+        // SweetAlertService,
         DataService
     ]
 })

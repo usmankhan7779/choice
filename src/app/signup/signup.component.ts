@@ -7,7 +7,7 @@ import { Headers, Http, Response } from '@angular/http';
 import { FormControl, FormGroup } from '@angular/forms';
 import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 import { ActivatedRoute,Router } from '@angular/router';
-import swal from 'sweetalert2';  
+// import swal from 'sweetalert2';  
 
 @Component({
     selector: 'app-signup',
@@ -128,16 +128,16 @@ export class SignupComponent implements OnInit {
 
     }
     sweetalertsignup() {
-        swal({
-            text: "Signup Successflluy!",
-            title: "Choice Genie",
-            type: "success",
-            showConfirmButton: false,
-            //     confirmButtonColor: "#DD6B55",
-            timer: 1200,
-            confirmButtonText: "OK",
+        // swal({
+        //     text: "Signup Successflluy!",
+        //     title: "Choice Genie",
+        //     type: "success",
+        //     showConfirmButton: false,
+        //     //     confirmButtonColor: "#DD6B55",
+        //     timer: 1200,
+        //     confirmButtonText: "OK",
 
-        })
+        // })
         //     this.router.navigate(['/pages/login'])
         // {
 

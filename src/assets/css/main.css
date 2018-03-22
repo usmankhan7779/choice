@@ -1377,3 +1377,32 @@ h3 {
                          height: 60px !important;
                            width: 60px;
 }
+.btn-slider-left{
+  top: 150px;
+  left: 50px;
+  z-index: 1;
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 50px;
+  color: #8a8a8a;
+}
+.btn-slider-right{
+  top: 150px;
+  right: 50px;
+  z-index: 1;
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 50px;
+  color: #8a8a8a;
+}
+.btn-slider:hover{
+  color: #fff;
+}
+.bg-slider{
+  width: 100% !important;
+}
+.slider-img img{
+  width: 100% !important;
+}

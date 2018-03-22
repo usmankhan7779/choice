@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
 import { PagerService } from '../pager.service';
 import { HttpClientModule } from '@angular/common/http'
 import {ProductsComponent, plandetailDialog} from "./products.component";
-import {ExtendedTableComponent} from "../tables/extendedtable/extendedtable.component";
-import {RegularTableComponent} from "../tables/regulartable/regulartable.component";
+// import {ExtendedTableComponent} from "../tables/extendedtable/extendedtable.component";
+// import {RegularTableComponent} from "../tables/regulartable/regulartable.component";
 import {ProductsRoutes} from './products.routing';
 import {PremiseDialog} from './products.component';
 //import {  plandetailDialog} from './products.component';
@@ -22,14 +21,14 @@ import { SimpleGlobal } from 'ng2-simple-global';
         CommonModule,
         RouterModule.forChild(ProductsRoutes),
         FormsModule,
-        MdModule,
+        // MdModule,
         MaterialModule,
       HttpClientModule
     ],
     declarations: [
         ProductsComponent,
-        ExtendedTableComponent,
-        RegularTableComponent,
+        // ExtendedTableComponent,
+        // RegularTableComponent,
         PremiseDialog,
         plandetailDialog,
         //PrettyPlanDetails

@@ -6,15 +6,19 @@ import {Config} from "./Config";
 export class CompanyService {
 
 
-username:any[];
-  constructor(private https: Http) { }
+username;
+  constructor(private https: Http) {}
+
 
   searchProduct(username) {
-   let headers = new Headers();
-headers.append('Content-Type', 'application/json');
-     return this.https.get(Config.api +'mydata/'+ username +'' ,{ headers: headers }).map((response: Response)  => response.json());
-  // return this.http.get('http://127.0.0.1:8000/choice/mydata/' + username +'', { headers: headers }).map((response: Response) => response.json());
-    
+  let headers = new Headers();
+   
+  headers.append('Content-Type', 'application/json');
+  // headers.append('Access-Control-Allow-Headers', 'Content-Type');
+  // headers.append('Access-Control-Allow-Methods', 'GET');
+    return this.https.get(Config.api +'mydata/'+ username +'', { headers: headers } ) .map((response: Response)  => response.json());
+  // return this.https.get('http://192.168.30.189:9000/choice/mydata/' + username +'', { headers: headers }).map((response: Response) => response.json());
+
     }
 }
 

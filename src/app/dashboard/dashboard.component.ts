@@ -1,7 +1,4 @@
-
 import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
-import { TableData } from '../md/md-table/md-table.component';
-import { LegendItem, ChartType } from '../md/md-chart/md-chart.component';
 import { Config } from "../Config";
 import { Subscription } from 'rxjs/Subscription';
 import { CompanyService } from "../company.service";
@@ -27,36 +24,36 @@ import { DataService } from '../data.service';
 
 
 
+
+
 declare interface DataTable {
     headerRow: string[];
     footerRow: string[];
     dataRows: string[][];
 }
-import * as Chartist from 'chartist';
 
 declare const $: any;
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-        const isSubmitted = form && form.submitted;
-        return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
     }
-
-
-}
-
-@Component({
+    
+    
+    }
+    
+    @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html'
-
-})
-
-export class DashboardComponent implements OnInit, AfterViewInit {
-    constructor( private route: ActivatedRoute,
+    
+    })
+    export class DashboardComponent implements OnInit, AfterViewInit {
+        constructor( private route: ActivatedRoute,
         private router: Router,private http: Http, private pagerService: PagerService, private homeService: HomeService, private sg: SimpleGlobal, private obj: HomeService, private dialog: MatDialog, private data: DataService,private companyService: CompanyService) {
-
-    }
+        
+        }
 
     // array of all items to be paged
     // pager object
@@ -77,7 +74,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     public products: any;
     rating;
     closeResult: string;
-    public tableData: TableData;
     startAnimationForLineChart(chart: any) {
         let seq: any, delays: any, durations: any;
         seq = 0;
@@ -92,7 +88,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
                 dur: 700,
                 from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
                 to: data.path.clone().stringify(),
-                easing: Chartist.Svg.Easing.easeOutQuint
+                // easing: Chartist.Svg.Easing.easeOutQuint
               }
             });
           } else if (data.type === 'point') {
@@ -134,69 +130,69 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         seq2 = 0;
     }
     setPage(username) {
-       // alert("username")
-      //  console.log("usernameeeeeeeeeeeee",username)
-      // if (page < 1 || page > this.pager.totalPages) {
-      //     return;
-      // }
-      const Results = {}
-  
-      this.companyService.searchProduct(username).subscribe(Response => {        // localStorage.setItem('products',response['Results']);
-      this.sg['products'] = Response['Results'];
-      // console.log(this.sg['products']);
-      // for (let prod of this.sg['products']) {
-      //     //console.log(prod["plan_information"])
-      //     //console.log(prod["price_rate"])
-      //     prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-      //     prod["price_rate"] = prod["price_rate"].split('..', 3000);
-      this.data.changeProducts(this.sg['products']);
-        this.prod_loaded = true;
-        this.prods_loaded = true;
-        //  this.allItems = this.sg['products'];
-        //console.clear()
-        // console.log(response['Total Result']);
-        // this.pager = this.pagerService.getPager(Response['Total Result'], page, 10);
-         //this.setPage(1);
-        // initialize to page 1
-        // console.log(this.sg['products']);
-
-    } );
-     // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-     }
- public username;
-
-
-private Sub: Subscription;
-  // constructor(private navbarTitleService: NavbarTitleService) { }
-  public ngOnInit() {
-    this.route.params.subscribe ( params => {
-
-
-    //  console.log('paramsssssssssss',params['username'])
-        this.setPage(params['username']) 
-    });
-    //  alert("junaid");
-    // this.data.currentProducts.subscribe(products => this.sg['products'] = products)
-    // this.data.currentProducts
-    this.Sub = this.route.params.subscribe(params => {
-    this.username= +params['username'] ;
-   // alert(this.username);
-    });
+        // alert("username")
+       //  console.log("usernameeeeeeeeeeeee",username)
+       // if (page < 1 || page > this.pager.totalPages) {
+       //     return;
+       // }
+       const Results = {}
+   
+       this.companyService.searchProduct(username).subscribe(Response => {        // localStorage.setItem('products',response['Results']);
+       this.sg['products'] = Response['Results'];
+       // console.log(this.sg['products']);
+       // for (let prod of this.sg['products']) {
+       //     //console.log(prod["plan_information"])
+       //     //console.log(prod["price_rate"])
+       //     prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+       //     prod["price_rate"] = prod["price_rate"].split('..', 3000);
+       this.data.changeProducts(this.sg['products']);
+         this.prod_loaded = true;
+         this.prods_loaded = true;
+         //  this.allItems = this.sg['products'];
+         //console.clear()
+         // console.log(response['Total Result']);
+         // this.pager = this.pagerService.getPager(Response['Total Result'], page, 10);
+          //this.setPage(1);
+         // initialize to page 1
+         // console.log(this.sg['products']);
+ 
+     } );
+      // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+      }
+  public username;
+ 
+ 
+ private Sub: Subscription;
+   // constructor(private navbarTitleService: NavbarTitleService) { }
+   public ngOnInit() {
+     this.route.params.subscribe ( params => {
+ 
+ 
+     //  console.log('paramsssssssssss',params['username'])
+         this.setPage(params['username']) 
+     });
+     //  alert("junaid");
+     // this.data.currentProducts.subscribe(products => this.sg['products'] = products)
+     // this.data.currentProducts
+     this.Sub = this.route.params.subscribe(params => {
+     this.username= +params['username'] ;
+    // alert(this.username);
+     });
    // this.setPage();
   //  console.log()
     
   //    console.log("fatimaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-      this.tableData = {
-          headerRow: ['ID', 'Name', 'Salary', 'Country', 'City'],
-          dataRows: [
-              ['US', 'USA', '2.920	', '53.23%'],
-              ['DE', 'Germany', '1.300', '20.43%'],
-              ['AU', 'Australia', '760', '10.35%'],
-              ['GB', 'United Kingdom	', '690', '7.87%'],
-              ['RO', 'Romania', '600', '5.94%'],
-              ['BR', 'Brasil', '550', '4.34%']
-          ]
-       };
+    //   this.tableData = {
+    //       headerRow: ['ID', 'Name', 'Salary', 'Country', 'City'],
+    //       dataRows: [
+    //           ['US', 'USA', '2.920	', '53.23%'],
+    //           ['DE', 'Germany', '1.300', '20.43%'],
+    //           ['AU', 'Australia', '760', '10.35%'],
+    //           ['GB', 'United Kingdom	', '690', '7.87%'],
+    //           ['RO', 'Romania', '600', '5.94%'],
+    //           ['BR', 'Brasil', '550', '4.34%']
+    //       ]
+    //    };
       /* ----------==========     Daily Sales Chart initialization    ==========---------- */
 
       const dataDailySalesChart = {
@@ -206,18 +202,18 @@ private Sub: Subscription;
           ]
       };
 
-     const optionsDailySalesChart = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 0
-          }),
-          low: 0,
-          high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
-      };
+    //  const optionsDailySalesChart = {
+    //       lineSmooth: Chartist.Interpolation.cardinal({
+    //           tension: 0
+    //       }),
+    //       low: 0,
+    //       high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+    //       chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
+    //   };
 
-      const dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+    //   const dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
-      this.startAnimationForLineChart(dailySalesChart);
+    //   this.startAnimationForLineChart(dailySalesChart);
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
       const dataCompletedTasksChart = {
@@ -227,20 +223,20 @@ private Sub: Subscription;
           ]
       };
 
-      const optionsCompletedTasksChart = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 0
-          }),
-          low: 0,
-          high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better
-          // look
-          chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
-      };
+    //   const optionsCompletedTasksChart = {
+    //       lineSmooth: Chartist.Interpolation.cardinal({
+    //           tension: 0
+    //       }),
+    //       low: 0,
+    //       high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better
+    //       // look
+    //       chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
+    //   };
 
-     const completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart,
-      optionsCompletedTasksChart);
+    //  const completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart,
+    //   optionsCompletedTasksChart);
 
-     this.startAnimationForLineChart(completedTasksChart);
+    //  this.startAnimationForLineChart(completedTasksChart);
 
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
@@ -269,9 +265,9 @@ private Sub: Subscription;
           }
         }]
       ];
-      const websiteViewsChart = new Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
+    //   const websiteViewsChart = new Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
 
-      this.startAnimationForBarChart(websiteViewsChart);
+    //   this.startAnimationForBarChart(websiteViewsChart);
 
       const mapData = {
            'AU': 760,

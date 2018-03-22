@@ -7,7 +7,7 @@ import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
 import { ResponseContentType } from '@angular/http/src/enums';
 import { Console } from '@angular/core/src/console';
-import swal from 'sweetalert2';
+// import swal from 'sweetalert2';
 import { TOUCHEND_HIDE_DELAY } from '@angular/material';
 // import { HomeRoutes } from '../../home/home.routing';
 
@@ -16,7 +16,6 @@ import { PasswordValidation } from './password-validator.component';
 import { LoginService } from './login.service';
 import { DataService } from '../../data.service';
 declare var $: any;
-
 declare interface ValidatorFn {
   (c: AbstractControl): {
     [key: string]: any;
@@ -38,7 +37,7 @@ declare interface User {
   templateUrl: './login.component.html'
 })
 
- export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit {
   public typeValidation: User;
   register: FormGroup;
   login: FormGroup;
@@ -47,10 +46,11 @@ declare interface User {
   private toggleButton: any;
   private sidebarVisible: boolean;
   private nativeElement: Node;
-  
+  public username:any[];
+
   password;
 
-  constructor(private data: DataService,public router: Router, private element: ElementRef, private http: Http, private route: ActivatedRoute,
+  constructor(public router: Router, private element: ElementRef, private http: Http, private route: ActivatedRoute,
     private sg: SimpleGlobal, private _nav: Router, private _serv: LoginService, private formBuilder: FormBuilder) {
     this.nativeElement = element.nativeElement;
     this.sidebarVisible = false;
@@ -66,7 +66,6 @@ declare interface User {
       'has-feedback': this.isFieldValid(form, field)
     };
   }
-
   onLogin() {
     // console.log(this.login);
     if (this.login.valid) {
@@ -78,12 +77,12 @@ declare interface User {
           this._serv.login(this.login.value.username, this.login.value.password).subscribe(
             data => {
               // console.log(data);
-              swal(
-                'Successfully! Logged in',
-                '',
-                'success'
-              )
-           //   this.toastr.success('Successfully!', 'Logged in',{toastLife: 5000});
+              // swal(
+              //   'Successfully! Logged in',
+              //   '',
+              //   'success'
+              // )
+              // this.toastr.success('Successfully!', 'Logged in',{toastLife: 5000});
               // let url = 'dashboard';
               // this._nav.navigate([url]);
 
@@ -91,11 +90,11 @@ declare interface User {
             error => {
               // console.log(error);
               // this.toastr.error(error, null, {toastLife: 5000});
-              swal(
-                'Invalid',
-                'Username OR Password',
-                'error'
-              )
+              // swal(
+              //   'Invalid',
+              //   'Username OR Password',
+              //   'error'
+              // )
            
             });
 
@@ -113,76 +112,43 @@ declare interface User {
       //);
     }
     else {
-    this.validateAllFormFields(this.login);
+      this.validateAllFormFields(this.login);
     }
   }
-//   onSubmit() {
-//     this.router.navigate(['/dashboard/'+ this.username]);
-// }
-prod_loaded = false;
-prods_loaded = false;
-  public products: any;
-  private allItems: any[];
-  public results: any;
-    public name;
- public username:any[];
- 
 
   onSubmit(){
     this.router.navigate(['/dashboard/'+ this.username]);
   }
-//   fetchcompany(username) {
-//     // this.route.params.subscribe(params => {
-//    //   let zip =  this.sg['product_zipcode'];
-//     let headers = new Headers();
-//     headers.append('Content-Type', 'application/json')
-//    this.http.get('http://127.0.0.1:8000/choice/mydata/' + this.username +'/', { headers: headers })
-//   //this.http.get(Config.api + 'monthly/' + this.zip_code + '',{ headers: headers })
-//  // this.http.get(Config.api + 'filter/' + this.zip_code + '',{ headers: headers })
 
-//  //  this.http.post(Config.api + 'filter/' + this.zip_code + '', {"month": this.months+" Month", "custom":"['2','8']"},{ headers: headers })
-//  .subscribe(Res => {
-//   this.sg['products'] = Res.json()['Results'];
-//   this.data.changeProducts(this.sg['products']);
-// //   for (let prod of this.sg['products']) {
-// //     console.log(prod["plan_information"])
-// //     console.log(prod["price_rate"])
-// //     prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-// //     prod["price_rate"] = prod["price_rate"].split('..', 3000);
-// // }
-// });
-
-  
-//     }
   foremail() {
-    swal({
-      title: 'Enter email address',
-      input: 'email',
-      inputPlaceholder: 'Enter your email address'
-    }).then((email) => {
-      this.forgetPassword(email)
+    // swal({
+    //   title: 'Enter email address',
+    //   input: 'email',
+    //   inputPlaceholder: 'Enter your email address'
+    // }).then((email) => {
+    //   this.forgetPassword(email)
 
-    })
+    // })
   }
 
   forgetPassword(pass) {
     // console.log("pass",pass.value['email']);
     this._serv.forget_password(pass).subscribe(
       data => {
-        swal({
-          type: 'success',
-          html: 'Password Reset instructions have been sent to your email. '
-        })
+        // swal({
+        //   type: 'success',
+        //   html: 'Password Reset instructions have been sent to your email. '
+        // })
         // console.log(data);
         // this.toastr.info(data.msg, null, {toastLife: 5000});
       },
       error => {
         // console.log(error);
-        swal(
-          'Invalid email ',
-          'Or user does not exist!',
-          'error'
-        )
+        // swal(
+        //   'Invalid email ',
+        //   'Or user does not exist!',
+        //   'error'
+        // )
       }
     )
 
@@ -201,9 +167,6 @@ prods_loaded = false;
   }
 
   ngOnInit() {
-    this.data.currentProducts.subscribe(products => this.sg['products'] = products)
-
-    this.username = this.sg['product_username'];
     this.login = this.formBuilder.group({
       // To add a validator, we must first convert the string value into an array. The first item in the array is the default value if any, then the next item in the array is the validator. Here we are adding a required validator meaning that the firstName attribute must have a value in it.
       username: ['', Validators.compose([Validators.required])],
