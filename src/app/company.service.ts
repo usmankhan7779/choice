@@ -17,7 +17,11 @@ username;
   // headers.append('Access-Control-Allow-Headers', 'Content-Type');
   // headers.append('Access-Control-Allow-Methods', 'GET');
    // return this.https.get(Config.api +'mydata/'+ username +'' ) .map((response: Response)  => response.json());
+<<<<<<< HEAD
    return this.https.get('http://192.168.30.52:9000/choice/mydata/'+ username + '/').map((response: Response) => response.json());
+=======
+   return this.https.get('http://192.168.30.52:9000/choice/mydata/' + username +'/').map((response: Response) => response.json());
+>>>>>>> 15623c51ef3d13ae30e2731e1b5df9fc073ba7fc
 
     }
 }

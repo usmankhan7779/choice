@@ -118,9 +118,6 @@ export const AppRoutes: Routes = [
                 path: 'maps',
                 loadChildren: './maps/maps.module#MapsModule'
             },  {
-                path: 'charts',
-                loadChildren: './charts/charts.module#ChartsModule'
-            }, {
                 path: 'calendar',
                 loadChildren: './calendar/calendar.module#CalendarModule'
             }, {
