@@ -79,6 +79,8 @@ import { DashboardService } from './dashboard/dashboard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StepperOverviewExample } from './signup/stepper-overview-example';
 
+// import { MainloginService } from './mainadmin/mainlogin/mainlogin.service';
+
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -115,7 +117,7 @@ import { StepperOverviewExample } from './signup/stepper-overview-example';
     FormsModule,
     MatFormFieldModule
   ],
-  declarations: [],
+  declarations: [ ],
 
 })
 export class MaterialModule {}
@@ -155,7 +157,7 @@ export class MaterialModule {}
     UserSidebarComponent,
     AboutComponent,
     StepperOverviewExample,
-  ],
+      ],
   providers: [
     HomeService,
     CompanyService,
@@ -165,6 +167,8 @@ export class MaterialModule {}
     LoginService,
     PagerService,
     DashboardService,
+  
+    // MainloginService,
 ResidentialService
   ],
   bootstrap: [AppComponent],

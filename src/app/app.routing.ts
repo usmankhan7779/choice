@@ -8,8 +8,7 @@ import {NormalLayoutComponent} from "./layouts/normal/normal-layout.component";
 import {StepperOverviewExample} from "./signup/stepper-overview-example";
 import { LoginComponent } from './pages/login/login.component';
 import { TermsComponent } from './terms/terms.component';
-// import { ContactusComponent } from './contactus/contactus.component';
-// import {Signup1Component} from './signup1/signup1.component';
+ 
 
 export const AppRoutes: Routes = [
     {
@@ -18,6 +17,7 @@ export const AppRoutes: Routes = [
         pathMatch: 'full',
     },
     {path: "home", component: HomeComponent},
+    // {path: "mainlogin", component: MainloginComponent},
   
     
 
