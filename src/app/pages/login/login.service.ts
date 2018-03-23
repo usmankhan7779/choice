@@ -20,7 +20,7 @@ export class LoginService {
         headers.append('Content-Type', 'application/json');
         //return this.http.get(Config.api+'data_against_zipcode/'+id+'?page='+page).map((response: Response) => response.json());
         // return this._http5.post(Config.api+'user-token-auth/',
-        return this._http5.post(Config.api + 'signin/',
+        return this._http5.post(Config.api + 'login/',
             JSON.stringify({ username: username, password: password }), { headers: headers })
             .map((response: Response) => {
                 let user = { username: username, token: response.json().token };
@@ -34,7 +34,7 @@ export class LoginService {
 
 
     login_authenticate(username: string, password: string) {
-        return this._http5.post(Config.api + 'signin/', {
+        return this._http5.post(Config.api + 'login/', {
             'username': username,
             'password': password
         }).map((res: Response) => res.json())
