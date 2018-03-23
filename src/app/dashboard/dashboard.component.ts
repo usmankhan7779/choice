@@ -74,61 +74,61 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     public products: any;
     rating;
     closeResult: string;
-    startAnimationForLineChart(chart: any) {
-        let seq: any, delays: any, durations: any;
-        seq = 0;
-        delays = 80;
-        durations = 500;
-        chart.on('draw', function(data: any) {
+    // startAnimationForLineChart(chart: any) {
+    //     let seq: any, delays: any, durations: any;
+    //     seq = 0;
+    //     delays = 80;
+    //     durations = 500;
+    //     chart.on('draw', function(data: any) {
   
-          if (data.type === 'line' || data.type === 'area') {
-            data.element.animate({
-              d: {
-                begin: 600,
-                dur: 700,
-                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-                to: data.path.clone().stringify(),
-                // easing: Chartist.Svg.Easing.easeOutQuint
-              }
-            });
-          } else if (data.type === 'point') {
-                seq++;
-                data.element.animate({
-                  opacity: {
-                    begin: seq * delays,
-                    dur: durations,
-                    from: 0,
-                    to: 1,
-                    easing: 'ease'
-                  }
-                });
-            }
-        });
+    //       if (data.type === 'line' || data.type === 'area') {
+    //         data.element.animate({
+    //           d: {
+    //             begin: 600,
+    //             dur: 700,
+    //             from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+    //             to: data.path.clone().stringify(),
+    //             // easing: Chartist.Svg.Easing.easeOutQuint
+    //           }
+    //         });
+    //       } else if (data.type === 'point') {
+    //             seq++;
+    //             data.element.animate({
+    //               opacity: {
+    //                 begin: seq * delays,
+    //                 dur: durations,
+    //                 from: 0,
+    //                 to: 1,
+    //                 easing: 'ease'
+    //               }
+    //             });
+    //         }
+    //     });
   
-        seq = 0;
-    }
-    startAnimationForBarChart(chart: any) {
-        let seq2: any, delays2: any, durations2: any;
-        seq2 = 0;
-        delays2 = 80;
-        durations2 = 500;
-        chart.on('draw', function(data: any) {
-          if (data.type === 'bar') {
-              seq2++;
-              data.element.animate({
-                opacity: {
-                  begin: seq2 * delays2,
-                  dur: durations2,
-                  from: 0,
-                  to: 1,
-                  easing: 'ease'
-                }
-              });
-          }
-        });
+    //     seq = 0;
+    // }
+    // startAnimationForBarChart(chart: any) {
+    //     let seq2: any, delays2: any, durations2: any;
+    //     seq2 = 0;
+    //     delays2 = 80;
+    //     durations2 = 500;
+    //     chart.on('draw', function(data: any) {
+    //       if (data.type === 'bar') {
+    //           seq2++;
+    //           data.element.animate({
+    //             opacity: {
+    //               begin: seq2 * delays2,
+    //               dur: durations2,
+    //               from: 0,
+    //               to: 1,
+    //               easing: 'ease'
+    //             }
+    //           });
+    //       }
+    //     });
   
-        seq2 = 0;
-    }
+    //     seq2 = 0;
+    // }
     setPage(username) {
         // alert("username")
        //  console.log("usernameeeeeeeeeeeee",username)
@@ -195,12 +195,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     //    };
       /* ----------==========     Daily Sales Chart initialization    ==========---------- */
 
-      const dataDailySalesChart = {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          series: [
-              [12, 17, 7, 17, 23, 18, 38]
-          ]
-      };
+    //   const dataDailySalesChart = {
+    //       labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+    //       series: [
+    //           [12, 17, 7, 17, 23, 18, 38]
+    //       ]
+    //   };
 
     //  const optionsDailySalesChart = {
     //       lineSmooth: Chartist.Interpolation.cardinal({
@@ -216,12 +216,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     //   this.startAnimationForLineChart(dailySalesChart);
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
-      const dataCompletedTasksChart = {
-          labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-          series: [
-              [230, 750, 450, 300, 280, 240, 200, 190]
-          ]
-      };
+    //   const dataCompletedTasksChart = {
+    //       labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
+    //       series: [
+    //           [230, 750, 450, 300, 280, 240, 200, 190]
+    //       ]
+    //   };
 
     //   const optionsCompletedTasksChart = {
     //       lineSmooth: Chartist.Interpolation.cardinal({
@@ -240,70 +240,70 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
-      const dataWebsiteViewsChart = {
-        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-        series: [
-          [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+    //   const dataWebsiteViewsChart = {
+    //     labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+    //     series: [
+    //       [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
 
-        ]
-      };
-      const optionsWebsiteViewsChart = {
-          axisX: {
-              showGrid: false
-          },
-          low: 0,
-          high: 1000,
-          chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
-      };
-      const responsiveOptions: any = [
-        ['screen and (max-width: 640px)', {
-          seriesBarDistance: 5,
-          axisX: {
-            labelInterpolationFnc: function (value) {
-              return value[0];
-            }
-          }
-        }]
-      ];
+    //     ]
+    //   };
+    //   const optionsWebsiteViewsChart = {
+    //       axisX: {
+    //           showGrid: false
+    //       },
+    //       low: 0,
+    //       high: 1000,
+    //       chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
+    //   };
+    //   const responsiveOptions: any = [
+    //     ['screen and (max-width: 640px)', {
+    //       seriesBarDistance: 5,
+    //       axisX: {
+    //         labelInterpolationFnc: function (value) {
+    //           return value[0];
+    //         }
+    //       }
+    //     }]
+    //   ];
     //   const websiteViewsChart = new Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
 
     //   this.startAnimationForBarChart(websiteViewsChart);
 
-      const mapData = {
-           'AU': 760,
-           'BR': 550,
-           'CA': 120,
-           'DE': 1300,
-           'FR': 540,
-           'GB': 690,
-           'GE': 200,
-           'IN': 200,
-           'RO': 600,
-           'RU': 300,
-           'US': 2920,
-       };
-          $('#worldMap').vectorMap({
-              map: 'world_mill_en',
-              backgroundColor: 'transparent',
-              zoomOnScroll: false,
-              regionStyle: {
-                  initial: {
-                      fill: '#e4e4e4',
-                      'fill-opacity': 0.9,
-                      stroke: 'none',
-                      'stroke-width': 0,
-                      'stroke-opacity': 0
-                  }
-              },
+    //   const mapData = {
+    //        'AU': 760,
+    //        'BR': 550,
+    //        'CA': 120,
+    //        'DE': 1300,
+    //        'FR': 540,
+    //        'GB': 690,
+    //        'GE': 200,
+    //        'IN': 200,
+    //        'RO': 600,
+    //        'RU': 300,
+    //        'US': 2920,
+    //    };
+        //   $('#worldMap').vectorMap({
+        //       map: 'world_mill_en',
+        //       backgroundColor: 'transparent',
+        //       zoomOnScroll: false,
+        //       regionStyle: {
+        //           initial: {
+        //               fill: '#e4e4e4',
+        //               'fill-opacity': 0.9,
+        //               stroke: 'none',
+        //               'stroke-width': 0,
+        //               'stroke-opacity': 0
+        //           }
+        //       },
 
-              series: {
-                  regions: [{
-                      values: mapData,
-                      scale: ['#AAAAAA', '#444444'],
-                      normalizeFunction: 'polynomial'
-                  }]
-              },
-          });
+        //       series: {
+        //           regions: [{
+        //               values: mapData,
+        //               scale: ['#AAAAAA', '#444444'],
+        //               normalizeFunction: 'polynomial'
+        //           }]
+        //       },
+        //   });
    }
    ngAfterViewInit() {
        const breakCards = true;
