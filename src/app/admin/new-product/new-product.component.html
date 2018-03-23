@@ -25,15 +25,15 @@
   <div class="col-md-6 col-sm-6">
   <div class="form-group">
   <mat-form-field>
-  <mat-select placeholder="Company Title" (ngModelChange)="check($event)" required [(ngModel)]="model.title"name="title">
+  <!-- <mat-select placeholder="Company Title" (ngModelChange)="check($event)" required [(ngModel)]="model.title"name="title">
   
   <mat-option *ngFor="let t of title" [value]="t.title">
   {{t.title}}
   
   </mat-option>
   
-  </mat-select>
-  <!-- <input matInput placeholder="Company Name"   required  [(ngModel)]="model.title"name="title"> -->
+  </mat-select> -->
+  <input matInput placeholder="Company Name"   required  [(ngModel)]="model.title"name="title">
   </mat-form-field>
   </div>
   </div>

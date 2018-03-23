@@ -36,7 +36,7 @@ export class NewProductComponent implements OnInit {
   //constructor() { }
   
   ngOnInit() {
-    this.company();
+    // this.company();
     
     this.signupForm = this.fb.group({
       'zipcode': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
