@@ -8,16 +8,16 @@ import { ResponseContentType } from '@angular/http/src/enums';
 import { DataService } from '../data.service';
 import { PagerService } from '../pager.service';
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
+import { AfterContentInit } from '@angular/core/src/metadata/lifecycle_hooks';
+
+declare const $: any;
+
 @Component({
   selector: 'app-user-sidebar',
   templateUrl: './user-sidebar.component.html',
-  //   template: `
-  //   {{sg.gv}}
-  
-  // `
-  
-  })
-  export class UserSidebarComponent implements OnInit {
+})
+
+  export class UserSidebarComponent implements OnInit, AfterContentInit {
   eUsage;
   months;
   cUsage;
@@ -39,14 +39,23 @@ import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
   zip_code;
   items;
   title;
+  mySelect;
   ngOnInit() {
   this.data.currentProducts.subscribe(products => this.sg['products'] = products)
   
   this.zip_code = this.sg['product_zipcode'];
   //this.months();
+    
+
   }
+  ngAfterContentInit() {
+    // console.log(this.eUsage);
+    // alert($("#mySelect").val());
+    
+  }
+  
   onChange(e) {
-  alert(e)
+    alert(e)
   }
   usage = [
   { value: 'building-0', viewValue: 'Building' },

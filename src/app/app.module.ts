@@ -78,7 +78,8 @@ import { CompanyService } from './company.service';
 import { DashboardService } from './dashboard/dashboard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StepperOverviewExample } from './signup/stepper-overview-example';
-
+import { DeleteService } from './dashboard/delete.service';
+import {EditService} from './dashboard/edit.service';
 // import { MainloginService } from './mainadmin/mainlogin/mainlogin.service';
 
 @NgModule({
@@ -167,7 +168,8 @@ export class MaterialModule {}
     LoginService,
     PagerService,
     DashboardService,
-  
+    DeleteService,
+    EditService,
     // MainloginService,
 ResidentialService
   ],

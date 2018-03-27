@@ -1,13 +1,14 @@
 <!-- <h5>Items per Page</h5>
-<mat-form-field >
-<mat-select  (ngModelChange)="check($event)" [(ngModel)]="items"  >
-<mat-option value="5" style="font-size: 20px">5</mat-option>
-<mat-option value="10" style="font-size: 20px">10 </mat-option>
-<mat-option value="20" style="font-size: 20px">20 </mat-option>
-</mat-select>
-</mat-form-field> -->
+        <mat-form-field >
+        <mat-select  (ngModelChange)="check($event)" [(ngModel)]="items"  >
+          <mat-option value="5" style="font-size: 20px">5</mat-option>
+          <mat-option value="10" style="font-size: 20px">10 </mat-option>
+          <mat-option value="20" style="font-size: 20px">20 </mat-option>
+        </mat-select>
+        </mat-form-field> -->
 
 <div class="main-content custom">
+
   <!-- <div class="container-fluid"> -->
   <div class="row">
     <div class="col-sm-12">
@@ -17,7 +18,7 @@
       </div>
       <!-- </div> -->
       <!-- <mat-paginator [length]="100" [pageSize]="20" [pageSizeOptions]="[5, 10, 25, 100]" (change)="_changePageSize($event.value)">
-  </mat-paginator> -->
+              </mat-paginator> -->
 
 
       <div class="products-area" *ngIf="prod_loaded;else no_data_templ">
@@ -32,6 +33,7 @@
               </div>
 
               <div class="card-content">
+
                 <div class="col-md-4  col-sm-3 col-xs-5 plan-detail text-center">
                   <a href="{{data.profileurl}}" target="_blank">
 
@@ -40,10 +42,53 @@
 
 
                   <img src="{{data.rating_logo}}" />
-
-
+                  <br>
+                  <!-- <input type="checkbox"value="{{data.id}}"name="id"[(ngModel)]=id>{{data.id}} -->
                   <!-- <br> <star-rating-comp [size]="'large'" [starType]="'svg'" [rating]="" [(ngModel)]="rating"></star-rating-comp>  -->
+                  <!-- <mat-checkbox name="deleteid"[(ngModel)]=deleteid value="{{data.id}}">{{data.deleteid}}</mat-checkbox> -->
+                  <!-- <input [(ngModel)]="data.id.checked" type="checkbox"value="{{data.id}}">{{data.id}} -->
 
+                  <!-- {{data.id}} <input type="checkbox" IsChecked="{{data.id}}" name="id"> -->
+                  <!-- <label>{{data.id}}</label>
+                  <button type="submit" class="btn btn-rose" (click)="deletedata()">Delete</button> -->
+
+                  <!-- <input type="text" [(ngModel)]="data.id" value="{{data.id}}" name="{{data.id}}"/>{{data.id}} -->
+                  <i class="fa fa-trash-o" type="submit" value="Delete" (click)="btnDeleteClick(data.id)" data-toggle="modal" data-target="#myModal3"
+                    style="color:red">
+                  </i>
+
+
+                  <div class="modal fade" id="myModal3" role="dialog">
+                    <div class="modal-dialog">
+                      <!-- Modal content-->
+                      <div class="modal-content" style="margin-top:25%; width:119%;">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title" style="text-align: center;
+                        color: red;
+                        font-size: 30px;">Confirmation Alert</h4>
+                        </div>
+                        <div class="modal-body" style="font-size: 18px;
+                        text-align: center;">
+                          <p>Do you want to Delete this Task?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" (click)="deleteClick(dataId)" data-dismiss="modal" style="background: red;
+                        color: white;
+                        border: red;
+                        width: 20%;
+                        height: 45px;
+                        font-size: 18px;">Delete</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" style="background: gray;
+                        color: white;
+                        border: gray;
+                        width: 20%;
+                        height: 45px;
+                        font-size: 18px;">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
 
@@ -60,6 +105,194 @@
                     <h3 *ngFor="let items of data.price_rate" class="text-center">
                       {{items}}¢
                     </h3>
+
+
+                    <div class="modal fade" id="myModal2" role="dialog">
+                      <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content" style="margin-top:25%; width:119%;">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" style="    color: white;
+opacity: 1;">&times;</button>
+
+                          </div>
+                          <div class="modal-body" style="font-size: 18px;
+text-align: center;">
+                            <form (ngSubmit)="onSubmit()" #f="ngForm">
+                              <!-- (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-zip" -->
+                              <!-- <div class="card card-login"> -->
+                              <div class="card-header text-center" data-background-color="rose">
+                                <h4 class="card-title">Edit Your product</h4>
+
+
+                              </div>
+
+                              <!-- <div class="card-content"> -->
+                              <!-- <lable>{{data.id}}</lable> -->
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="ID" name="id" [(ngModel)]=id />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Title" name="title" [(ngModel)]=title />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Profile url" name="profileurl" [(ngModel)]=profileurl />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Profile Logo" name="profile_logo" [(ngModel)]=profile_logo />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Rating_logo" name="rating_logo" [(ngModel)]=rating_logo />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Plan_Information" name="plan_information" [(ngModel)]=plan_information />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Price Rate" name="price_rate" [(ngModel)]=price_rate />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Cancelation Fee" name="cancelation_fee" [(ngModel)]=cancelation_fee />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Fact Sheet" name="fact_sheet" [(ngModel)]=fact_sheet />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Term of Service" name="terms_of_service" [(ngModel)]=terms_of_service />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Phone No" name="phone" [(ngModel)]=phone />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Sign Up" name="sign_up" [(ngModel)]=sign_up />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                <div class="input-group">
+
+
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <mat-form-field>
+                                    <input matInput placeholder="Zipcode" name="zipcode" [(ngModel)]=zipcode />
+
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                              <!-- </div> -->
+                              <div class="footer text-center">
+                                <button type="submit" class="btn btn-rose" (click)="editClick(PId)" data-dismiss="modal">Update</button>
+
+                                <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>
+                                <!-- <button class="btn btn-rose btn-wd btn-lg" type="submit" (click)="onSubmit()" >Search</button> -->
+                              </div>
+                              <!-- </div> -->
+                            </form>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <!-- </div> -->
                   <!-- <small>{{data.display_uom}}</small> -->
@@ -79,14 +312,19 @@
                     <a style="color:white" href="{{data.profileurl}}" target="_blank">Signup </a>
                     <i class="material-icons">bubble_chart</i>
                   </button>
+                  <br>
+                  <button type="submit" class="btn btn-rose" style="display:block; margin: 0 auto;" (click)="btnEditClick(data.id)" data-toggle="modal"
+                    data-target="#myModal2">
+                    Edit
+                  </button>
 
                 </div>
                 <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
-  (click)="signUp(data.product_id)"
-  
-  
-  
-  </div> -->
+        (click)="signUp(data.product_id)"
+        
+        
+        
+        </div> -->
                 <div class="col-sm-12">
                   <a href="#p-pane-{{i}}" class="view-more collapsed" data-toggle="collapse">
                     View more
@@ -116,7 +354,7 @@
                 </h3>
 
                 <h4 *ngIf="data.cancelation_fee;else no_data_temp2">
-                  &nbsp;&nbsp;&nbsp;&nbsp; {{data.cancelation_fee.split(' ',3000)[2]}}
+                  &nbsp;&nbsp;&nbsp;&nbsp; {{data.cancelation_fee}}
                 </h4>
 
                 <ng-template #no_data_temp2>
@@ -142,47 +380,66 @@
                       Fact Sheet
                     </a>
                   </li>
+
                 </ul>
               </div>
 
               <br>
 
               <div class="col-sm-12 ">
+                <h3>Minimum Usage Fee</h3>
+                <p *ngIf="data.minumum_usage_fee;else no_data_temp6">
+                  {{data.minumum_usage_fee}}
+                </p>
+                <ng-template #no_data_temp6>
 
+                  <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                  <h4>&nbsp;&nbsp;&nbsp;&nbsp; -------------</h4>
+                </ng-template>
+                <h3>Special Terms</h3>
+                <p *ngIf="data.specialterms;else no_data_temp2">
+                  {{data.specialterms}}
+                </p>
+
+                <ng-template #no_data_temp2>
+
+                  <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                  <h4>&nbsp;&nbsp;&nbsp;&nbsp; -------------</h4>
+                </ng-template>
               </div>
 
               <div class="col-sm-12">
                 <!--<h4>Rates Detail:</h4>-->
                 <div class="table">
-                  <table class="table-normal">
-                    <thead>
-                      <tr>
-                        <td>
-                          Average Monthly Use
-                        </td>
-                        <td>
-                          Average Price per kWh
-                        </td>
-                      </tr>
-                    </thead>
-
-                    <tbody *ngFor="let items of data.price_rate">
-                      <tr>
-
-                        <td>
-                          <h2 style="font-size: 20px">{{ items.split(' ',3000)[0]}} KWH </h2>
-                        </td>
-                        <td>
-                          <h2 style="font-size: 20px"> {{ items.split(' ',3000)[2]}} $</h2>
-                        </td>
-                        <!-- <td><h4>$ 15.20</h4></td> -->
-                      </tr>
-                      <!-- <tr>
-  <td><h4>1000 kWh</h4></td>
-  <td><h4>$ 13.60</h4></td>
-  </tr> -->
-                    </tbody>
-                  </table>
+                  <!-- <table class="table-normal">
+                              <thead>
+                                <tr>
+                                  <td>
+                                    Average Monthly Use
+                                  </td>
+                                  <td>
+                                    Average Price per kWh
+                                  </td> -->
+                  <!-- </tr>
+                              </thead>
+        
+                              <tbody *ngFor="let items of data.price_rate">
+                                <tr>
+        
+                                  <td>
+                                    <h2 style="font-size: 20px">{{ items.split(' ',3000)[0]}} KWH </h2>
+                                  </td>
+                                  <td>
+                                    <h2 style="font-size: 20px"> {{ items.split(' ',3000)[2]}} $</h2>
+                                  </td> -->
+                  <!-- <td><h4>$ 15.20</h4></td> -->
+                  <!-- </tr> -->
+                  <!-- <tr>
+        <td><h4>1000 kWh</h4></td>
+        <td><h4>$ 13.60</h4></td>
+        </tr> -->
+                  <!-- </tbody>
+                            </table> -->
 
                 </div>
               </div>
@@ -191,35 +448,35 @@
           </div>
 
           <!-- <div class="col-sm-12 col-md-6">
-  <h4>Get your year-pass savings:</h4>
-  <ul>
-  <li>Keep your bills mild when the weather gets wild, and get a low rate in between.*</li>
-  <li>In summer and winter months, see the Season Pass Savings right on your bill.
-  
-  </li>
-  </ul>
-  <h5>Plan Documents</h5>
-  <ul class="list-normal">
-  <li>
-  <a href="{{data.terms_of_service}}" target="_blank">
-  <i class="material-icons">picture_as_pdf</i>
-  Terms of service
-  </a>
-  </li>
-  <li>
-  <a href="#">
-  <i class="material-icons">picture_as_pdf</i>
-  Your rights as a Customer
-  </a>
-  </li>
-  <li>
-  <a href="{{data.fact_sheet}}" target="_blank">
-  <i class="material-icons">picture_as_pdf</i>
-  Fact Sheet
-  </a>
-  </li>
-  </ul>
-  </div> -->
+        <h4>Get your year-pass savings:</h4>
+        <ul>
+        <li>Keep your bills mild when the weather gets wild, and get a low rate in between.*</li>
+        <li>In summer and winter months, see the Season Pass Savings right on your bill.
+        
+        </li>
+        </ul>
+        <h5>Plan Documents</h5>
+        <ul class="list-normal">
+        <li>
+        <a href="{{data.terms_of_service}}" target="_blank">
+        <i class="material-icons">picture_as_pdf</i>
+        Terms of service
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        <i class="material-icons">picture_as_pdf</i>
+        Your rights as a Customer
+        </a>
+        </li>
+        <li>
+        <a href="{{data.fact_sheet}}" target="_blank">
+        <i class="material-icons">picture_as_pdf</i>
+        Fact Sheet
+        </a>
+        </li>
+        </ul>
+        </div> -->
 
 
         </div>
@@ -239,34 +496,34 @@
   </div>
 </div>
 <!-- <div>
-  <div> -->
-    <div class="container">
-      <div class="text-center">
-        <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
-    
-        <!-- items being paged -->
-        <div *ngFor="let item of pagedItems">{{item.name}}</div>
-    
-        <!-- pager -->
-        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-          <li [ngClass]="{hide:pager.currentPage === 1}">
-            <a (click)="setPage(1)" class="btn btn-rose">First</a>
-          </li>
-          <li [ngClass]="{hide:pager.currentPage === 1}">
-            <a (click)="setPage(pager.currentPage - 1)" class="btn btn-rose">Previous</a>
-          </li>
-          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-            <a (click)="setPage(page)" class="btn btn-rose">{{page}}</a>
-          </li>
-          <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.currentPage + 1)" class="btn btn-rose" type="Next">Next</a>
-          </li>
-          <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.totalPages)" class="btn btn-rose" type="Last">Last</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+            <div> -->
+<div class="container">
+  <div class="text-center">
+    <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
+
+    <!-- items being paged -->
+    <div *ngFor="let item of pagedItems">{{item.name}}</div>
+
+    <!-- pager -->
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li [ngClass]="{hide:pager.currentPage === 1}">
+        <a (click)="setPage(1)" class="btn btn-rose">First</a>
+      </li>
+      <li [ngClass]="{hide:pager.currentPage === 1}">
+        <a (click)="setPage(pager.currentPage - 1)" class="btn btn-rose">Previous</a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <a (click)="setPage(page)" class="btn btn-rose">{{page}}</a>
+      </li>
+      <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.currentPage + 1)" class="btn btn-rose" type="Next">Next</a>
+      </li>
+      <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.totalPages)" class="btn btn-rose" type="Last">Last</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
 
 
@@ -277,21 +534,21 @@
 
 
 <!-- <div class="mat-paginator-page-size">
-  <div class="mat-paginator-page-size-label">{{_intl.itemsPerPageLabel}}</div>
-  <mat-form-field *ngIf="_displayedPageSizeOptions.length > 1" class="mat-paginator-page-size-select">
-  <mat-select [value]="pageSize" [aria-label]="_intl.itemsPerPageLabel" (change)="_changePageSize($event.value)">
-  <mat-option *ngFor="let pageSizeOption of _displayedPageSizeOptions" [value]="pageSizeOption">{{pageSizeOption}}</mat-option>
-  </mat-select>
-  </mat-form-field>
-  <div *ngIf="_displayedPageSizeOptions.length <= 1">{{pageSize}}</div>
-  </div>
-  <div class="mat-paginator-range-label">{{_intl.getRangeLabel(pageIndex, pageSize, length)}}</div>
-  <button mat-icon-button type="button" class="mat-paginator-navigation-previous"
-  (click)="previousPage()" [attr.aria-label]="_intl.previousPageLabel" [matTooltip]="_intl.previousPageLabel" [matTooltipPosition]="'above'"
-  [disabled]="!hasPreviousPage()">
-  <div class="mat-paginator-increment"></div>
-  </button>
-  <button mat-icon-button type="button" class="mat-paginator-navigation-next" (click)="nextPage()" [attr.aria-label]="_intl.nextPageLabel"
-  [matTooltip]="_intl.nextPageLabel" [matTooltipPosition]="'above'" [disabled]="!hasNextPage()">
-  <div class="mat-paginator-decrement"></div>
-  </button> -->
+          <div class="mat-paginator-page-size-label">{{_intl.itemsPerPageLabel}}</div>
+          <mat-form-field *ngIf="_displayedPageSizeOptions.length > 1" class="mat-paginator-page-size-select">
+            <mat-select [value]="pageSize" [aria-label]="_intl.itemsPerPageLabel" (change)="_changePageSize($event.value)">
+              <mat-option *ngFor="let pageSizeOption of _displayedPageSizeOptions" [value]="pageSizeOption">{{pageSizeOption}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div *ngIf="_displayedPageSizeOptions.length <= 1">{{pageSize}}</div>
+        </div>
+        <div class="mat-paginator-range-label">{{_intl.getRangeLabel(pageIndex, pageSize, length)}}</div>
+        <button mat-icon-button type="button" class="mat-paginator-navigation-previous"
+          (click)="previousPage()" [attr.aria-label]="_intl.previousPageLabel" [matTooltip]="_intl.previousPageLabel" [matTooltipPosition]="'above'"
+          [disabled]="!hasPreviousPage()">
+          <div class="mat-paginator-increment"></div>
+        </button>
+        <button mat-icon-button type="button" class="mat-paginator-navigation-next" (click)="nextPage()" [attr.aria-label]="_intl.nextPageLabel"
+          [matTooltip]="_intl.nextPageLabel" [matTooltipPosition]="'above'" [disabled]="!hasNextPage()">
+          <div class="mat-paginator-decrement"></div>
+        </button> -->
